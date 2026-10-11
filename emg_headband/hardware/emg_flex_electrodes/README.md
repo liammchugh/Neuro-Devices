@@ -106,13 +106,26 @@ direction. Corrugator is a small muscle, so its pair is at 15 mm. Pads are
 
 The goal is a contact with a slight protrusion (about 1 to 1.5 mm) that
 anchors the band without digging in, similar to the domes on a Delsys sensor.
-The footprint takes either of:
+Default: a small machined dome button, made to order (CNC services such as
+JLCCNC or PCBWay make these cheaply in tens):
 
-1. A gold-plated or stainless dome-head stud or rivet, about 6 mm head and
-   1.5 mm shank, pressed through the plated hole and soldered on the F side.
-   This is the default; the specific part is not chosen yet.
-2. A male ECG snap stud, for using stick-on gel electrodes during bench
-   validation of the sites.
+- Ø6 mm head with a shallow dome: 1.2 mm tall at the centre, about 4 mm
+  spherical radius, edges broken so nothing is sharp.
+- Ø1.4 mm × 1.5 mm shank that drops into the 1.5 mm plated hole and is
+  soldered on the outer (F) side. The Ø8 mm pad leaves a 1 mm solder ring
+  around the head on the skin side.
+- Silver-plated (or gold-plated) brass. Silver is what Delsys and most
+  research dry electrodes use; it can later be chlorided to Ag/AgCl for lower
+  noise. Avoid stainless steel here: it is skin-safe but solder won't wet it.
+
+Alternatives on the same footprint:
+
+- Spring pins where hair gets in the way (the temple on some heads): three
+  2 mm SMD pogo pins per site, e.g. YIYUAN YTC1P-2010-01 (LCSC C5221287, 3 mm
+  tall, 2.3 mm working height), placed on the pad. Smaller contact area, so
+  higher impedance; use only if the dome can't reach skin.
+- A male ECG snap stud, for using stick-on gel electrodes during bench
+  validation of the sites.
 
 Dry gold contacts work once the skin is a little moist; expect higher
 impedance and more motion artefact in the first minutes. Ag/AgCl gives lower
