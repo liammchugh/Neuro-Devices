@@ -64,7 +64,8 @@ corrected in `emg_wearable_revA_cpl_jlc.csv`, from JLC's preview on 11 Oct 2026:
 | U6, U8, U9 (SOT-23-5), U7 (SOT-23-6) | 0 | 270 |
 | Q101 (SOT-23) | 0 | 180 |
 | J6 (FPC) | 90 | 90, and Mid X moved to the part centre (+2.2 mm) |
-| SW1 (slide switch) | 180 | 0 |
+| SW1 (slide switch) | 180 | 0, and Mid Y moved 0.7 mm inboard (-73.6 → -72.9) |
+| J7 (USB-C) | 0 | 0, and Mid Y moved 1.3 mm inboard (-71.8 → -70.5) |
 
 If the board is re-exported from KiCad, apply the same offsets again.
 
