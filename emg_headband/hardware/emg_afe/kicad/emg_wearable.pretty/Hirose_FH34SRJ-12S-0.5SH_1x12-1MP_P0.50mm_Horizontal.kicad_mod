@@ -3,7 +3,7 @@
   (generator "kicad-mcp")
   (generator_version "9.0")
   (layer "F.Cu")
-  (descr "Hirose FH34SRJ-12S-0.5SH(50), 12 contacts, 0.5 mm pitch, 1.0 mm tall, back-flip ZIF, top and bottom contact. Land pattern from the Hirose datasheet (Aug 2019, p.4): signal pads 0.3 x 0.8, mounting pads 0.4 x 0.8, E=7.1, F=7.9, 3.3 from signal pad edge to mounting pad edge. FPC inserts from the mounting-tab side (+Y); the signal pads are at the back (actuator side). Check against the datasheet before ordering.")
+  (descr "Hirose FH34SRJ-12S-0.5SH(50), 12 contacts, 0.5 mm pitch, 1.0 mm tall, back-flip ZIF, top and bottom contact. Land pattern from the Hirose datasheet (Aug 2019, p.4): signal pads 0.3 x 0.8, mounting pads 0.4 x 0.8, E=7.1, F=7.9, 3.3 from the outer edge of the signal pads to the outer edge of the mounting pads (tabs at 2.5-3.3). FPC inserts from the mounting-tab side (+Y); the signal pads are at the back (actuator side). Check against the datasheet before ordering.")
   (tags "FPC FFC Hirose FH34SRJ 0.5mm 12pin")
 
   (property "Reference" "REF**" (at 0 -1.3 0)
@@ -24,7 +24,7 @@
 
   (fp_rect
     (start -4.55 -0.3)
-    (end 4.55 4.6)
+    (end 4.55 3.6)
     (stroke (width 0.05) (type default))
     (fill none)
     (layer "F.CrtYd")
@@ -33,7 +33,7 @@
 
   (fp_rect
     (start -4.25 1.05)
-    (end 4.25 4.3)
+    (end 4.25 3.55)
     (stroke (width 0.12) (type default))
     (fill none)
     (layer "F.SilkS")
@@ -42,7 +42,7 @@
 
   (fp_rect
     (start -4 0.75)
-    (end 4 4.05)
+    (end 4 3.4)
     (stroke (width 0.1) (type default))
     (fill none)
     (layer "F.Fab")
@@ -134,14 +134,14 @@
   )
 
   (pad "MP" smd rect
-    (at 3.75 3.7)
+    (at 3.75 2.9)
     (size 0.4 0.8)
     (layers "F.Cu" "F.Paste" "F.Mask")
     (uuid "715916e6-5762-4a9d-876b-fd321feae6fe")
   )
 
   (pad "MP" smd rect
-    (at -3.75 3.7)
+    (at -3.75 2.9)
     (size 0.4 0.8)
     (layers "F.Cu" "F.Paste" "F.Mask")
     (uuid "bd5c5661-daeb-4b22-ba9a-08296d8db17f")
