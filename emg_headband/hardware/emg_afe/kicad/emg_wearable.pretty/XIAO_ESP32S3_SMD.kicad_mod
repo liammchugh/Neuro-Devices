@@ -3,6 +3,7 @@
   (generator "kicad-mcp")
   (generator_version "9.0")
   (layer "F.Cu")
+  (attr smd exclude_from_pos_files exclude_from_bom)
   (descr "Seeed XIAO ESP32-S3 soldered flush by its castellations (2x7, 2.54 mm pitch, rows 15.24 mm apart). USB-C at -Y. Pads 15/16 (BAT+/BAT-) are placeholders under the module: VERIFY their position against the Seeed drawing before ordering, or wire the battery to the XIAO pads before mounting.")
   (tags "XIAO ESP32S3 Seeed castellated SMD")
 

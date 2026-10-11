@@ -85,9 +85,9 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
 - J1: CUI SJ-3523-SMT 3.5 mm TRS jack for CH1 (tip ELEC1_P, ring ELEC1_N,
   sleeve `RLD_ELEC`).
 - J6: Hirose FH34SRJ-12S-0.5SH(50) back-flip FPC (C424659; 12 pins, 0.5 mm,
-  1.0 mm tall), in parallel with J1 for CH1: use one or the other. CH2 and CH3 are on J6 only. Pinout: 1
-  AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2, 8 REF, 9 AGND, 10/11 CH3, 12 REF,
-  MP AGND. Footprint `emg_wearable:Hirose_FH34SRJ-12S-0.5SH_...` is drawn from
+  1.0 mm tall), in parallel with J1 for CH1: use one or the other. CH2 and CH3 are on J6 only. Pinout (ordered to match the board routing; it can change when the flex
+  array is designed): 1 AGND, 2/3 CH3 N/P, 4 REF, 5 AGND, 6/7 CH2 N/P, 8 REF,
+  9 AGND, 10/11 CH1 N/P, 12 REF, MP AGND. Footprint `emg_wearable:Hirose_FH34SRJ-12S-0.5SH_...` is drawn from
   the Hirose land pattern; check it against the datasheet before ordering. The
   FPC enters from the signal-pad side; contact 1 is at +X.
 
@@ -101,7 +101,7 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
   RLDREF and WCT not connected (internal mid-supply reference). GPIO1 to 4 not
   connected: set them as outputs in firmware.
 - RLDIN tied to `RLD_ELEC` so firmware can measure the REF electrode.
-- SPI to the XIAO: D8 SCLK, D9 DOUT, D10 DIN, D3 CS (10 k pull-up), D4 DRDY,
+- SPI to the XIAO: D5 SCLK (GPIO6, moved for routing), D9 DOUT, D10 DIN, D3 CS (10 k pull-up), D4 DRDY,
   D1 START, D0 RESET (10 k pull-up). PWDN held high by 10 k; use register
   standby instead. D2/GPIO3 is left free because it is a strapping pin.
 - Firmware: power down unused channels (CHnSET.PDn), pick RLD sense channels
@@ -123,11 +123,24 @@ JLC-assemblable: footprint for headers or castellations, hand-soldered.
 
 ## Board
 
-2-layer (4-layer if it helps the size), 0603 passives, continuous AGND plane.
-Keep U1, its supply and the electrode connectors away from the XIAO antenna and
-USB. Route each P/N pair together with matched lengths. Test points on the
-rails, RLD_OUT, DRDY and SCLK. Isolation gap under the ISO7721 with no copper
-crossing it.
+2-layer flex (polyimide), 63.5 × 25.4 mm, all parts on top. Layout notes:
+
+- XIAO at the left, soldered by its castellations, USB-C on the bottom edge
+  (points down the spine). Top-layer copper is kept out from under the module.
+- ADS1298 in the middle with its decoupling caps above and below; input RC
+  filters on the electrode side; J1 jack and J6 FPC on the right edge.
+- AGND pours on both layers with stitching vias. Routed with Freerouting, then
+  checked in KiCad: DRC is clean apart from the J1 silkscreen running over the
+  board edge where the jack overhangs.
+- Stiffeners (0.2 mm FR4, back side) are drawn on the `Stiffener` (User.1)
+  layer: under the XIAO, under the ADS1298 block and under J1/J6. The strips
+  between them (power column, input RC column) are the bend zones; keep bends
+  there gentle since they carry 0603 parts.
+
+Fab outputs are in `kicad/fab/`: gerbers and drill files, `*_bom_jlc.csv` and
+`*_cpl_jlc.csv` for JLCPCB assembly. The XIAO, LiPo pads and test points are
+excluded from assembly. Check part rotations in JLC's placement preview
+(SOT-23, SOT-23-5 and TQFP often need an offset).
 
 ## Bring-up
 

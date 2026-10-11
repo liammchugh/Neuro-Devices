@@ -3,6 +3,7 @@
   (generator "kicad-mcp")
   (generator_version "9.0")
   (layer "F.Cu")
+  (attr smd exclude_from_pos_files exclude_from_bom)
   (descr "Two SMD solder pads for LiPo leads (1 = BAT+, 2 = BAT-). Put a stiffener under them on flex.")
   (tags "battery LiPo solder pad")
 

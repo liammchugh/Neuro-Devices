@@ -5481,16 +5481,6 @@
 		)
 		(uuid "29f26473-a5c9-46f9-942a-3fb7ed7f2707")
 	)
-	(label "SPI_SCK"
-		(at 68.58 66.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d9e12fed-6a45-470a-aeda-5a716b4a49a9")
-	)
 	(label "SPI_MISO"
 		(at 68.58 63.5 0)
 		(effects
@@ -6537,10 +6527,6 @@
 	(no_connect
 		(at 43.18000000000001 58.42)
 		(uuid "86016691-044c-4536-8360-1488b18d2032")
-	)
-	(no_connect
-		(at 43.18000000000001 66.04)
-		(uuid "de8cdddd-9378-4c23-8760-43c4d2b0e490")
 	)
 	(no_connect
 		(at 149.86 50.8)
@@ -9745,26 +9731,6 @@
 		)
 		(uuid "586cee89-7972-45f1-8989-3bc32a617efd")
 	)
-	(label "ELEC1_P"
-		(at 25.4 218.44 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e0941c0b-003d-49ae-8404-9b685c07f5a3")
-	)
-	(label "ELEC1_N"
-		(at 25.4 220.98 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "b88d7c01-7bf1-4e18-8cab-7b44f3b10cec")
-	)
 	(label "RLD_ELEC"
 		(at 25.4 223.51999999999998 180)
 		(effects
@@ -9785,26 +9751,6 @@
 		)
 		(uuid "53fed8df-29ba-4359-b89d-ac27655c6199")
 	)
-	(label "ELEC2_P"
-		(at 25.4 228.6 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "286392bd-4a9c-4853-854b-9f2e78853e55")
-	)
-	(label "ELEC2_N"
-		(at 25.4 231.14 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f19574ba-c098-40c3-9843-e46de4ffaa78")
-	)
 	(label "RLD_ELEC"
 		(at 25.4 233.68 180)
 		(effects
@@ -9824,26 +9770,6 @@
 			(justify right bottom)
 		)
 		(uuid "9a78dcb0-8900-4629-8e8c-ab098ab8037b")
-	)
-	(label "ELEC3_P"
-		(at 25.4 238.76 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f2138a8e-445e-4f66-a592-e616d2ef5699")
-	)
-	(label "ELEC3_N"
-		(at 25.4 241.29999999999998 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "b058d9c3-190d-4998-b0d9-e8cdfd6a3757")
 	)
 	(label "RLD_ELEC"
 		(at 25.4 243.84 180)
@@ -10487,158 +10413,6 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 330.2 50.8 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "ec248225-2a8e-4c60-902a-0d6dbb795c0a")
-		(property "Reference" "TP6"
-			(at 330.2 46.99 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ADS_DRDY"
-			(at 330.2 45.72 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 335.28 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 335.28 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 330.2 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "fc0b24aa-5e1a-4449-a8fa-d1f353feb4b8")
-		)
-		(instances
-			(project "emg_wearable_revA"
-				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
-					(reference "TP6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 342.9 50.8 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "4984acc6-e2ba-47c8-8c62-5b76c703f4c8")
-		(property "Reference" "TP7"
-			(at 342.9 46.99 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SPI_SCK"
-			(at 342.9 45.72 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 347.98 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 347.98 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 342.9 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "30e06d00-b5fe-4943-bcc4-86b0c20a0f5d")
-		)
-		(instances
-			(project "emg_wearable_revA"
-				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
-					(reference "TP7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
 		(at 355.6 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -10763,26 +10537,6 @@
 		)
 		(uuid "71074cb0-b5c7-4b62-a556-018f19f2fea7")
 	)
-	(label "ADS_DRDY"
-		(at 330.2 50.8 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f5910046-aa67-46aa-8791-850769048361")
-	)
-	(label "SPI_SCK"
-		(at 342.9 50.8 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "013cfa7b-295d-42d1-9ddf-06e57656d5aa")
-	)
 	(label "AGND"
 		(at 355.6 50.8 270)
 		(effects
@@ -10893,6 +10647,80 @@
 	(no_connect
 		(at 68.58 68.58)
 		(uuid "e47258c7-344f-4569-90f2-7deff4520301")
+	)
+	(label "ELEC3_N"
+		(at 25.4 218.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5c7bff48-50ec-409f-ae87-ecc4db6bc0dc")
+	)
+	(label "ELEC3_P"
+		(at 25.4 220.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ac541b5a-0379-4de0-ac67-7af76e5676c7")
+	)
+	(label "ELEC2_N"
+		(at 25.4 228.6 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "724ea2db-9a3f-4ffc-90c9-c65e27446208")
+	)
+	(label "ELEC2_P"
+		(at 25.4 231.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4ee81557-d7ee-4667-b15d-a3afce9b3476")
+	)
+	(label "ELEC1_N"
+		(at 25.4 238.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5b211d92-9ed7-414a-91af-bdb291c40980")
+	)
+	(label "ELEC1_P"
+		(at 25.4 241.29999999999998 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0531e16d-9895-453e-992e-6d84e354887b")
+	)
+	(label "SPI_SCK"
+		(at 43.18000000000001 66.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3b4a010a-5ea9-4ef8-9679-557f1297670c")
+	)
+	(no_connect
+		(at 68.58 66.04)
+		(uuid "0a5537cb-a840-4791-b306-7b7949f48e89")
 	)
 	(sheet_instances
 		(path "/"
