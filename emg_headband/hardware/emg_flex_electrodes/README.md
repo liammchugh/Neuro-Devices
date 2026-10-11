@@ -86,7 +86,7 @@ direction. Corrugator is a small muscle, so its pair is at 15 mm. Pads are
 - 2-layer polyimide, 0.11 mm, ENIG, yellow or black coverlay (JLCPCB flex).
   The outline is 298 × 43 mm, inside JLC's 234 × 490 mm flex limit.
 - Skin side is **B**. Electrodes are Ø8 mm (REF Ø12) ENIG pads exposed on B,
-  with a 1.5 mm plated hole for a domed contact's shank soldered on the outer
+  with a 3.1 mm plated hole for an optional domed rivet soldered on the outer
   (F) side.
 - Signals run on **F** (outer). **B** carries a hatched AGND shield between
   the traces and the skin, so traces do not pick up the skin they cross and
@@ -99,37 +99,39 @@ direction. Corrugator is a small muscle, so its pair is at 15 mm. Pads are
 - Stiffeners (drawn on the `Stiffener` user layer): 0.2 mm PI on the B side
   of the FPC tab, giving about 0.31 mm with the 0.11 mm flex (Hirose asks for
   0.30 ± 0.03 mm). Rings behind each electrode on the F side (0.2 mm FR4 with a
-  4 mm hole for the shank) stop the dome from peeling the pad when the band
+  5 mm hole for the rivet shank) stop the dome from peeling the pad when the band
   flexes.
 
 ## Electrodes
 
-The goal is a contact with a slight protrusion (about 1 to 1.5 mm) that
-anchors the band without digging in, similar to the domes on a Delsys sensor.
-Default: a small machined dome button, made to order (CNC services such as
-JLCCNC or PCBWay make these cheaply in tens):
+Rev 1 needs no custom parts. Each site is an ENIG pad (Ø8 mm, REF Ø12 mm)
+with a 3.1 mm plated hole, and works two ways:
 
-- Ø6 mm head with a shallow dome: 1.2 mm tall at the centre, about 4 mm
-  spherical radius, edges broken so nothing is sharp.
-- Ø1.4 mm × 1.5 mm shank that drops into the 1.5 mm plated hole and is
-  soldered on the outer (F) side. The Ø8 mm pad leaves a 1 mm solder ring
-  around the head on the skin side.
-- Silver-plated (or gold-plated) brass. Silver is what Delsys and most
-  research dry electrodes use; it can later be chlorided to Ag/AgCl for lower
-  noise. Avoid stainless steel here: it is skin-safe but solder won't wet it.
+1. **Flat pad (default, nothing to buy).** The gold pad is the electrode.
+   On the hairless forehead this is enough electrically; what matters is
+   steady pressure, so put a 2 to 3 mm closed-cell foam disc behind each
+   electrode lobe (between flex and band). Many forehead headbands use flat
+   contacts this way.
+2. **Domed rivet (if the band slides or contact is poor).** A standard DIN
+   660 / ISO 1051 round-head solid rivet, 3 mm, in copper (or brass): head
+   Ø5.2 mm, 1.8 mm tall, a ready-made dome. Push it through the hole from the
+   skin side, trim the shank to about 1 mm and solder it to the pad on the
+   outer side. Copper solders easily and is skin-safe; it tarnishes, so wipe
+   it before use or tin the head. The 2.5 mm size (Ø4.4 × 1.5 mm head) is a
+   gentler option but needs a 2.6 mm hole (`DRILL` in `gen_flex.py`).
 
-Alternatives on the same footprint:
+Other stock options, not recommended for rev 1:
 
-- Spring pins where hair gets in the way (the temple on some heads): three
-  2 mm SMD pogo pins per site, e.g. YIYUAN YTC1P-2010-01 (LCSC C5221287, 3 mm
-  tall, 2.3 mm working height), placed on the pad. Smaller contact area, so
-  higher impedance; use only if the dome can't reach skin.
-- A male ECG snap stud, for using stick-on gel electrodes during bench
-  validation of the sites.
+- SMD pogo pins (e.g. YIYUAN YTC1P-2010-01, LCSC C5221287, 2 mm, 3 mm tall):
+  push through hair but have a small, pointed contact.
+- A male ECG snap stud, to use stick-on gel electrodes when validating sites.
 
-Dry gold contacts work once the skin is a little moist; expect higher
-impedance and more motion artefact in the first minutes. Ag/AgCl gives lower
-noise if the dry contacts are not good enough.
+Bar ("wedge") electrodes like Delsys's are not sold as parts; they would be
+custom. A custom silver dome (Ø6 mm, 1.2 mm tall, Ø1.4 mm shank) remains the
+rev 2 upgrade if the rivets work but feel too sharp.
+
+Dry contacts improve once the skin is a little moist; expect higher impedance
+and more motion artefact in the first minutes.
 
 ## Mating with the main board
 

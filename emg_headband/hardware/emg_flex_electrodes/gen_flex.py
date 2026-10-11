@@ -49,7 +49,7 @@ ELECTRODES = [
     ("E6", "CH3N", 85.0, 14.0, 8.0, f"CH3- TEMPORALIS {T}"),
     ("E7", "REF", 0.0, 37.0, 12.0, "REF / RLD"),
 ]
-DRILL = 1.5          # plated hole for a dome stud / rivet shank
+DRILL = 3.1          # plated hole for a DIN 660 3 mm round-head rivet (optional)
 LOBE_MARGIN = 2.0    # flex material around each pad
 
 # --- Routing ------------------------------------------------------------------
@@ -293,7 +293,7 @@ def write_pcb(shape, segs, vias, path):
     for ref, net, x, y, d, _ in ELECTRODES:
         kx, ky = K(x, y)
         out.append(f'  (gr_circle (center {kx} {ky}) (end {kx + d / 2 + 1.0} {ky}) (stroke (width 0.1) (type solid)) (fill none) (layer "User.1"))\n')
-        out.append(f'  (gr_circle (center {kx} {ky}) (end {kx + 2.0} {ky}) (stroke (width 0.1) (type solid)) (fill none) (layer "User.1"))\n')
+        out.append(f'  (gr_circle (center {kx} {ky}) (end {kx + 2.5} {ky}) (stroke (width 0.1) (type solid)) (fill none) (layer "User.1"))\n')
     # ear outline and keep-out (drawing only; the generator asserts the gap)
     ear = ear_shape().simplify(0.2)
     out.append(f'  (gr_poly (pts {poly_pts(ear)}) (stroke (width 0.15) (type dash)) (fill none) (layer "Dwgs.User"))\n')
