@@ -35,7 +35,15 @@ T, O = TAIL_SIDE, ("R" if TAIL_SIDE == "L" else "L")   # tail side, other side
 # Pin order as on hardware/emg-rev-a-kicad (commit c72bb90, 11 Oct 2026).
 PINS = {1: "AGND", 2: "CH1P", 3: "CH1N", 4: "REF", 5: "AGND", 6: "CH2P",
         7: "CH2N", 8: "REF", 9: "AGND", 10: "CH3P", 11: "CH3N", 12: "REF"}
-NETS = ["", "AGND", "REF", "CH1P", "CH1N", "CH2P", "CH2N", "CH3P", "CH3N"]
+# The main board's AGND pins (1, 5, 9) are left unconnected on the flex. The
+# B.Cu shield is tied to REF instead: REF is the RLD-driven body potential, so
+# the ~35-55 pF each signal trace has to the shield carries no common-mode
+# current and does not convert 50/60 Hz into a differential error. An AGND
+# shield would add that capacitance to AGND on top of the main board's 100 pF
+# input caps and undo their dry-electrode CMRR margin.
+NC_PINS = {p for p, n in PINS.items() if n == "AGND"}
+SHIELD_NET = "REF"
+NETS = ["", "REF", "CH1P", "CH1N", "CH2P", "CH2N", "CH3P", "CH3N"]
 NET = {n: i for i, n in enumerate(NETS)}
 
 # --- Electrode sites ----------------------------------------------------------
@@ -66,7 +74,6 @@ TAIL_YC = 34.0       # tail centre height (runs above the ear)
 TAIL_PITCH = 0.5
 SPREAD_PITCH = 1.0
 X_VIA0, X_VIA_STEP = 102.0, 1.4   # crossover via columns
-X_GND_VIA = 115.5
 X_SPREAD0, X_SPREAD1 = 118.0, 122.0
 # Tail end: half of a 58 cm head (290 mm) minus 27 mm from the back centre
 # to J6 contacts on the 62.5 mm main board (c72bb90), plus ~7 mm slack.
@@ -140,15 +147,13 @@ def routes():
     via_x = {}
     k = 0
     for pin in range(1, 13):
+        if pin in NC_PINS:
+            continue
         net = PINS[pin]
         ty, sy = tail_y(pin), spread_y(pin)
         # tail at 0.5 mm pitch, then spread to 1.0 mm
         segs.append(("F.Cu", net, (X_END - FINGER_INSET - FINGER[0] / 2, ty), (X_SPREAD1, ty)))
         segs.append(("F.Cu", net, (X_SPREAD1, ty), (X_SPREAD0, sy)))
-        if net == "AGND":
-            segs.append(("F.Cu", net, (X_SPREAD0, sy), (X_GND_VIA, sy)))
-            vias.append((net, (X_GND_VIA, sy)))   # to the B.Cu shield
-            continue
         x = X_VIA0 + k * X_VIA_STEP
         k += 1
         segs.append(("F.Cu", net, (X_SPREAD0, sy), (x, sy)))
@@ -200,7 +205,7 @@ def fp_fpc_body(ref="J**", value=FPC_FP, nets=False):
     for pin in range(1, 13):
         net = PINS[pin]
         dy = -(tail_y(pin) - TAIL_YC)
-        netx = f' (net {NET[net]} "{net}")' if nets else ""
+        netx = f' (net {NET[net]} "{net}")' if nets and pin not in NC_PINS else ""
         pads.append(f'    (pad "{pin}" smd rect (at 0 {dy:.3f}) (size {FINGER[0]} {FINGER[1]}) '
                     f'(layers "F.Cu" "F.Mask"){netx})')
     return f'''    (descr "FPC tail for Hirose FH34SRJ-12S-0.5SH: 12 contacts on F.Cu, 0.3 x 2.5 mm, 0.5 mm pitch, pin 1 at the top, tab edge on the {'+X' if SIGN > 0 else '-X'} side. Tab width 6.5 mm; needs a B-side stiffener to 0.30 +/- 0.03 mm total.")
@@ -271,12 +276,13 @@ def write_pcb(shape, segs, vias, path):
     for net, p in vias:
         x, y = K(*p)
         out.append(f'  (via (at {x} {y}) (size {VIA[0]}) (drill {VIA[1]}) (layers "F.Cu" "B.Cu") (net {NET[net]}))\n')
-    # AGND hatched shield on the skin side (B.Cu), clear of the FPC tab
+    # Hatched shield on the skin side (B.Cu) at REF potential, clear of the FPC
+    # tab. It joins REF through the crossover jumpers and the REF electrode.
     shield = shape.difference(box(X_END - TAB_LEN - 1.5, -100, X_END + 10, 100)).buffer(-0.5, 16)
     if shield.geom_type != "Polygon":
         shield = max(shield.geoms, key=lambda g: g.area)
     shield = shield.simplify(0.05)
-    out.append(f'''  (zone (net 1) (net_name "AGND") (layer "B.Cu") (name "SHIELD") (hatch edge 0.5)
+    out.append(f'''  (zone (net {NET[SHIELD_NET]}) (net_name "{SHIELD_NET}") (layer "B.Cu") (name "SHIELD") (hatch edge 0.5)
     (connect_pads (clearance 0.6)) (min_thickness 0.2) (filled_areas_thickness no)
     (fill (mode hatch) (thermal_gap 0.5) (thermal_bridge_width 0.5)
       (hatch_thickness 0.3) (hatch_gap 1.0) (hatch_orientation 45)
@@ -334,7 +340,7 @@ def sym_electrode():
 def sym_fpc():
     pins = "\n".join(
         f'        (pin passive line (at -5.08 {13.97 - (i - 1) * 2.54:.2f} 0) (length 2.54) '
-        f'(name "{PINS[i]}" {SFONT}) (number "{i}" {SFONT}))' for i in range(1, 13))
+        f'(name "{"NC" if i in NC_PINS else PINS[i]}" {SFONT}) (number "{i}" {SFONT}))' for i in range(1, 13))
     return f'''(symbol "FPC_Tail_12P" (pin_names (offset 1.016)) (in_bom no) (on_board yes)
       (property "Reference" "J" (at 0 16.51 0) {SFONT})
       (property "Value" "FPC_Tail_12P" (at 0 -16.51 0) {SFONT})
@@ -388,12 +394,15 @@ def write_schematic(path):
     place("FPC_Tail_12P", "J1", "TO MAIN BOARD J6 (FH34SRJ-12S)", FPC_FP, jx, jy, 12)
     for i in range(1, 13):
         py = jy - 13.97 + (i - 1) * 2.54
-        stub(jx - 5.08, py, jx - 5.08 - 7.62, PINS[i], 180)
+        if i in NC_PINS:
+            items.append(f'  (no_connect (at {jx - 5.08:.2f} {py:.2f}) (uuid {uid()}))')
+        else:
+            stub(jx - 5.08, py, jx - 5.08 - 7.62, PINS[i], 180)
     notes = [
         "Forehead EMG electrode flex. Generated by gen_flex.py: edit there, not here.",
         f"Tail runs along the subject's {'right' if TAIL_SIDE == 'R' else 'left'} to main board J6 (pin order from hardware/emg-rev-a-kicad c72bb90).",
         "CH1 frontalis (brow raise), CH2 corrugator (frown), CH3 anterior temporalis (jaw clench).",
-        "REF is the shared RLD electrode; the three REF pins all land on it. AGND pins tie to the B.Cu hatched shield.",
+        "REF is the shared RLD electrode; the three REF pins all land on it. Main board AGND pins 1/5/9 are not connected; the B.Cu hatched shield is tied to REF.",
         "Electrode pairs: 20 mm centre spacing along the fibres (corrugator 15 mm).",
     ]
     for k, t in enumerate(notes):
@@ -461,7 +470,7 @@ def write_drawing(shape, segs, vias, path):
     ax.set_xlabel(f"arc length along the band from forehead midline (mm, + = toward the tail, subject's {side})")
     ax.set_ylabel("height above brow (mm)")
     ax.set_title("EMG forehead electrode flex, Rev A draft (outer side view; red = F.Cu traces, blue = B.Cu jumpers; "
-                 "B.Cu hatched AGND shield not drawn)", fontsize=10)
+                 "B.Cu hatched REF shield not drawn)", fontsize=10)
     fig.tight_layout()
     fig.savefig(path)
     plt.close(fig)

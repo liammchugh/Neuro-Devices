@@ -88,11 +88,13 @@ direction. Corrugator is a small muscle, so its pair is at 15 mm. Pads are
 - Skin side is **B**. Electrodes are Ø8 mm (REF Ø12) ENIG pads exposed on B,
   with a 2.7 mm plated hole for an optional domed rivet soldered on the outer
   (F) side.
-- Signals run on **F** (outer). **B** carries a hatched AGND shield between
-  the traces and the skin, so traces do not pick up the skin they cross and
-  the band stays flexible. It is tied to the three AGND pins.
-- Along the tail the 12 conductors keep the connector order at 0.5 mm pitch,
-  so each P/N pair stays adjacent (small loop area) with an AGND guard between
+- Signals run on **F** (outer). **B** carries a hatched shield between the
+  traces and the skin, so traces do not pick up the skin they cross and the
+  band stays flexible. The shield is tied to **REF**, not AGND (see "Copper
+  and noise" below). The main board's AGND pins (1, 5, 9) are left
+  unconnected on the flex.
+- Along the tail the conductors keep the connector order at 0.5 mm pitch, so
+  each P/N pair stays adjacent (small loop area), with a REF conductor between
   channels. A crossover block in front of the ear re-orders them with short
   B.Cu jumps so every electrode can leave the bundle without crossings.
 - The three REF pins are joined into one REF net at the crossover.
@@ -133,6 +135,31 @@ rev 2 upgrade if the rivets work but feel too sharp.
 Dry contacts improve once the skin is a little moist; expect higher impedance
 and more motion artefact in the first minutes.
 
+## Copper and noise
+
+Checked against the main board's input network (hardware/emg-rev-a-kicad
+93eab72: 22 kΩ series + 100 pF C0G per input, RLD through 330 kΩ) and its
+review notes on dry-electrode CMRR.
+
+- **Width and thickness are not a noise problem.** The longest trace (CH2−,
+  about 320 mm of 0.25 mm × 12 µm copper) is under 4 Ω. Its thermal noise is
+  0.25 nV/√Hz, against 19 nV/√Hz from each 22 kΩ series resistor and far more
+  from dry electrodes. The currents are nA (lead-off) to < 10 µA (RLD), so IR
+  drop is nil. Wider or thicker copper would only add capacitance and make the
+  flex stiffer; 1/3 oz is the better choice for a flex that bends.
+- **Capacitance is what matters.** Each signal trace has roughly 35 to 55 pF
+  to the hatched shield under it (0.17 pF/mm, estimated for a 25 µm polyimide
+  core and 41 % hatch coverage). If the shield were AGND, that would sit in
+  parallel with the main board's 100 pF input caps, which were cut from 1 nF
+  for dry-electrode CMRR, and add 35 to 55 % back. With the shield at REF
+  (the RLD-driven body potential) that capacitance carries no 50/60 Hz common
+  mode, so it does not convert mains into a differential error.
+- **What the shield capacitance still does:** with a 1 MΩ dry electrode it
+  forms a low-pass at about 3 to 4 kHz, above the 20 to 450 Hz EMG band
+  (under 2 % loss at 450 Hz).
+- **P/N matching:** each pair's two traces run side by side and differ in
+  length by at most 14 mm (CH2, whose electrodes sit 15 mm apart), about 2 pF.
+
 ## Ordering at JLCPCB
 
 Upload `kicad/fab/emg_flex_electrodes_gerbers.zip` (gerbers, Excellon drill,
@@ -160,8 +187,9 @@ electrode, 7 per board.
 ## Mating with the main board
 
 The tail carries the main board's J6 pin order (hardware/emg-rev-a-kicad,
-commit c72bb90): 1 AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2 P/N, 8 REF, 9
-AGND, 10/11 CH3 P/N, 12 REF. The tab is 6.5 mm wide with 0.3 × 2.5 mm contacts
+commit c72bb90, rechecked at 825610d): 1 AGND, 2/3 CH1 P/N, 4 REF, 5 AGND,
+6/7 CH2 P/N, 8 REF, 9 AGND, 10/11 CH3 P/N, 12 REF. The AGND pins are not
+connected on the flex. The tab is 6.5 mm wide with 0.3 × 2.5 mm contacts
 at 0.5 mm pitch. The crossover block re-orders lanes, so a later pin order
 change on the main board only means editing `PINS` and regenerating.
 
