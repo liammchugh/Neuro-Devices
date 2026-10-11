@@ -21,7 +21,7 @@ until the isolation checks in "Bring-up" pass.
    switches. Dedicated low-noise analog rail. Protected LiPo.
 4. Debug: USB serial over the XIAO USB-C. The isolated UART footprint was
    dropped for size.
-9. Board: 2-layer flex PCB, 63.5 × 25.4 mm (2.5" × 1") max, XIAO soldered by
+9. Board: 2-layer flex PCB, 57 × 25.4 mm (2.24" × 1"; limit 2.5" × 1"), XIAO soldered by
    its castellations at one end with USB-C pointing down (across the long
    axis), jack and FPC at the other end.
 5. Filtering in firmware: capture wide (about 0.5 Hz up, 4 kSPS or more) so
@@ -85,11 +85,11 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
 - J1: CUI SJ-3523-SMT 3.5 mm TRS jack for CH1 (tip ELEC1_P, ring ELEC1_N,
   sleeve `RLD_ELEC`).
 - J6: Hirose FH34SRJ-12S-0.5SH(50) back-flip FPC (C424659; 12 pins, 0.5 mm,
-  1.0 mm tall), in parallel with J1 for CH1: use one or the other. CH2 and CH3 are on J6 only. Pinout (ordered to match the board routing; it can change when the flex
-  array is designed): 1 AGND, 2/3 CH3 N/P, 4 REF, 5 AGND, 6/7 CH2 N/P, 8 REF,
-  9 AGND, 10/11 CH1 N/P, 12 REF, MP AGND. Footprint `emg_wearable:Hirose_FH34SRJ-12S-0.5SH_...` is drawn from
+  1.0 mm tall), in parallel with J1 for CH1: use one or the other. CH2 and CH3 are on J6 only. Pinout: 1 AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2 P/N, 8 REF, 9 AGND,
+  10/11 CH3 P/N, 12 REF, MP AGND. Footprint `emg_wearable:Hirose_FH34SRJ-12S-0.5SH_...` is drawn from
   the Hirose land pattern; check it against the datasheet before ordering. The
-  FPC enters from the signal-pad side; contact 1 is at +X.
+  FPC inserts from the mounting-tab side, which faces the board edge; the
+  signal pads and back-flip actuator are on the inboard side.
 
 **ADS1298 (U1)**
 - IN1 to IN3 from the input RC. IN4 to IN8 and TESTP_PACE_OUT1/2 to AVDD, as
@@ -123,19 +123,22 @@ JLC-assemblable: footprint for headers or castellations, hand-soldered.
 
 ## Board
 
-2-layer flex (polyimide), 63.5 × 25.4 mm, all parts on top. Layout notes:
+2-layer flex (polyimide), 57 × 25.4 mm (2.24" × 1"), parts on top, test pads on the back. Layout notes:
 
 - XIAO at the left, soldered by its castellations, USB-C on the bottom edge
   (points down the spine). Top-layer copper is kept out from under the module.
-- ADS1298 in the middle with its decoupling caps above and below; input RC
-  filters on the electrode side; J1 jack and J6 FPC on the right edge.
+- ADS1298 in the middle with its decoupling caps above and below. J1 jack at
+  the top right (plug toward the end), J6 FPC at the bottom right with its
+  opening on the board edge, and the input RC filters right next to J6.
+- Test pads (rails, VSYS, RLD_OUT, AGND) are on the back, under the input RC
+  block where there is no stiffener.
 - AGND pours on both layers with stitching vias. Routed with Freerouting, then
   checked in KiCad: DRC is clean apart from the J1 silkscreen running over the
   board edge where the jack overhangs.
 - Stiffeners (0.2 mm FR4, back side) are drawn on the `Stiffener` (User.1)
-  layer: under the XIAO, under the ADS1298 block and under J1/J6. The strips
-  between them (power column, input RC column) are the bend zones; keep bends
-  there gentle since they carry 0603 parts.
+  layer: under the XIAO, under the ADS1298 block and under J1/J6. The power
+  column and the input RC block are the bend zones; keep bends there gentle
+  since they carry 0603 parts.
 
 Fab outputs are in `kicad/fab/`: gerbers and drill files, `*_bom_jlc.csv` and
 `*_cpl_jlc.csv` for JLCPCB assembly. The XIAO, LiPo pads and test points are

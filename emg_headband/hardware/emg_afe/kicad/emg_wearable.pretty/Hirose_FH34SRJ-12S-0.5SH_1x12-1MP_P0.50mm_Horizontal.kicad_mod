@@ -3,7 +3,7 @@
   (generator "kicad-mcp")
   (generator_version "9.0")
   (layer "F.Cu")
-  (descr "Hirose FH34SRJ-12S-0.5SH(50), 12 contacts, 0.5 mm pitch, 1.0 mm tall, back-flip ZIF, top and bottom contact. Land pattern from the Hirose datasheet (Aug 2019, p.4): signal pads 0.3 x 0.8, mounting pads 0.4 x 0.8, E=7.1, F=7.9, 3.3 from signal pad edge to mounting pad edge. FPC enters from the signal-pad side (-Y). Check against the datasheet before ordering.")
+  (descr "Hirose FH34SRJ-12S-0.5SH(50), 12 contacts, 0.5 mm pitch, 1.0 mm tall, back-flip ZIF, top and bottom contact. Land pattern from the Hirose datasheet (Aug 2019, p.4): signal pads 0.3 x 0.8, mounting pads 0.4 x 0.8, E=7.1, F=7.9, 3.3 from signal pad edge to mounting pad edge. FPC inserts from the mounting-tab side (+Y); the signal pads are at the back (actuator side). Check against the datasheet before ordering.")
   (tags "FPC FFC Hirose FH34SRJ 0.5mm 12pin")
 
   (property "Reference" "REF**" (at 0 -1.3 0)

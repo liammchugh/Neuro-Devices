@@ -10648,66 +10648,6 @@
 		(at 68.58 68.58)
 		(uuid "e47258c7-344f-4569-90f2-7deff4520301")
 	)
-	(label "ELEC3_N"
-		(at 25.4 218.44 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "5c7bff48-50ec-409f-ae87-ecc4db6bc0dc")
-	)
-	(label "ELEC3_P"
-		(at 25.4 220.98 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "ac541b5a-0379-4de0-ac67-7af76e5676c7")
-	)
-	(label "ELEC2_N"
-		(at 25.4 228.6 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "724ea2db-9a3f-4ffc-90c9-c65e27446208")
-	)
-	(label "ELEC2_P"
-		(at 25.4 231.14 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "4ee81557-d7ee-4667-b15d-a3afce9b3476")
-	)
-	(label "ELEC1_N"
-		(at 25.4 238.76 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "5b211d92-9ed7-414a-91af-bdb291c40980")
-	)
-	(label "ELEC1_P"
-		(at 25.4 241.29999999999998 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "0531e16d-9895-453e-992e-6d84e354887b")
-	)
 	(label "SPI_SCK"
 		(at 43.18000000000001 66.04 180)
 		(effects
@@ -10721,6 +10661,66 @@
 	(no_connect
 		(at 68.58 66.04)
 		(uuid "0a5537cb-a840-4791-b306-7b7949f48e89")
+	)
+	(label "ELEC1_P"
+		(at 25.4 218.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b32a0f87-a651-4bf5-94b1-c449865d53a1")
+	)
+	(label "ELEC1_N"
+		(at 25.4 220.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4c7b6ec5-c45a-4a99-8528-5bfb753459e9")
+	)
+	(label "ELEC2_P"
+		(at 25.4 228.6 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7cfc09d9-77a0-4042-8a5f-f38696f33be8")
+	)
+	(label "ELEC2_N"
+		(at 25.4 231.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "31c7a7e5-4cb4-4f21-9c64-addda8f9cda6")
+	)
+	(label "ELEC3_P"
+		(at 25.4 238.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7950250a-1325-4c6d-928d-39f6305dc55c")
+	)
+	(label "ELEC3_N"
+		(at 25.4 241.29999999999998 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "eb2484ea-f4bb-4bfa-b6fe-5f1d729cfa01")
 	)
 	(sheet_instances
 		(path "/"
