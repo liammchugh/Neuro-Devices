@@ -3767,6 +3767,493 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector_Generic_MountingPin:Conn_01x12_MountingPin"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x12_MountingPin"
+				(at 1.27 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connectable mounting pin connector, single row, 01x12, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??-1MP*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x12_MountingPin_1_1"
+				(rectangle
+					(start -1.27 13.97)
+					(end 1.27 -16.51)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 12.827)
+					(end 0 12.573)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 10.287)
+					(end 0 10.033)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 7.747)
+					(end 0 7.493)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 5.207)
+					(end 0 4.953)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -7.493)
+					(end 0 -7.747)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -10.033)
+					(end 0 -10.287)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -12.573)
+					(end 0 -12.827)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -15.113)
+					(end 0 -15.367)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -17.272) (xy 1.016 -17.272)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "Mounting"
+					(at 0 -16.891 0)
+					(effects
+						(font
+							(size 0.381 0.381)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 12.7 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 10.16 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 7.62 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 0)
+					(length 3.81)
+					(name "Pin_9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -10.16 0)
+					(length 3.81)
+					(name "Pin_10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -12.7 0)
+					(length 3.81)
+					(name "Pin_11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -15.24 0)
+					(length 3.81)
+					(name "Pin_12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -20.32 90)
+					(length 3.048)
+					(name "MountPin"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(symbol
 		(lib_id "emg_wearable:XIAO_ESP32S3")
@@ -11180,7 +11667,7 @@
 		(at 73.66 60.96)
 		(uuid "7edf2cbe-b3d9-49f2-a176-0f7fcdb6eb7c")
 	)
-	(text "POWER: USB 5V / LiPo auto power path -> LP5907 3.0 V low-noise LDO -> +3V0_A (EN from XIAO 3V3)"
+	(text "POWER: USB/LiPo auto path -> LP5907 3.0 V LDO -> +3V0_A"
 		(exclude_from_sim no)
 		(at 20 25 0)
 		(effects
@@ -11216,7 +11703,7 @@
 		)
 		(uuid "9f8180e6-b808-4f53-8bef-b11c5c82c4d1")
 	)
-	(text "INA333 G1 = 1 + 100k/20k = 6"
+	(text "INA333 G1 = 6"
 		(exclude_from_sim no)
 		(at 152 115 0)
 		(effects
@@ -11386,9 +11873,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C8598" (at 93.98 76.2 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C8598"
+			(at 93.98 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f58e120f-4229-4264-b5b0-16f73042eac7")
 		)
@@ -11473,9 +11966,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C15127" (at 93.98 96.52 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C15127"
+			(at 93.98 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ec7cc624-acc0-46cd-8759-43523c718631")
 		)
@@ -11558,9 +12057,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C25803" (at 78.74 96.52 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C25803"
+			(at 78.74 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "652e9243-4d5f-4835-bdc5-e0fe115591ad")
 		)
@@ -11642,9 +12147,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C19702" (at 109.22 96.52 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C19702"
+			(at 109.22 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "aaccf602-ff5a-4858-957d-b1218c6f633a")
 		)
@@ -11724,9 +12235,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C475492" (at 129.54 78.74 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C475492"
+			(at 129.54 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bd2b02ef-9bff-47b3-93b3-6d4e9ab2f71a")
 		)
@@ -11990,6 +12507,503 @@
 			(justify left bottom)
 		)
 		(uuid "b227aabf-5dc5-49f2-b7a5-ae1044a80758")
+	)
+	(symbol
+		(lib_id "Connector_Audio:AudioJack3")
+		(at 307.34 220.98 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b5482899-2413-466c-a5dc-8afeb47fcca0")
+		(property "Reference" "J4"
+			(at 307.34 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CH2 ELECTRODES (TRS)"
+			(at 307.34 214.63 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal"
+			(at 307.34 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 307.34 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Audio Jack, 3 Poles (Stereo / TRS)"
+			(at 307.34 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C4991872" (at 307.34 220.98 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "MPN" "CUI SJ-3523-SMT-TR" (at 307.34 220.98 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "R"
+			(uuid "3251434c-09cc-4e24-af47-81ca0cc76ce0")
+		)
+		(pin "S"
+			(uuid "4daef502-d6e4-4c83-9f10-02e782b4c38c")
+		)
+		(pin "T"
+			(uuid "a786e15a-2a54-4670-9314-fd6d157d44ab")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Audio:AudioJack3")
+		(at 307.34 238.76 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3f8479dd-753b-449c-9a1b-d877b7d46a1b")
+		(property "Reference" "J5"
+			(at 307.34 233.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CH3 ELECTRODES (TRS)"
+			(at 307.34 232.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal"
+			(at 307.34 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 307.34 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Audio Jack, 3 Poles (Stereo / TRS)"
+			(at 307.34 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C4991872" (at 307.34 238.76 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "MPN" "CUI SJ-3523-SMT-TR" (at 307.34 238.76 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "R"
+			(uuid "8bfe92bc-0b24-49ef-ac36-14f673e30104")
+		)
+		(pin "S"
+			(uuid "7f79ad55-dcb1-4d66-b871-e8cd83401421")
+		)
+		(pin "T"
+			(uuid "6ed321c9-f9cd-4e2e-9288-3bd58480959c")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic_MountingPin:Conn_01x12_MountingPin")
+		(at 365.76 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d43fc218-b31f-46c3-98ca-2e369067bfa0")
+		(property "Reference" "J6"
+			(at 365.76 213.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FLEX ARRAY (FPC 12P 0.5mm)"
+			(at 365.76 212.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_FFC-FPC:Hirose_FH12-12S-0.5SH_1x12-1MP_P0.50mm_Horizontal"
+			(at 365.76 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 365.76 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connectable mounting pin connector, single row, 01x12, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 365.76 228.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C88360" (at 365.76 228.6 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "MPN" "Hirose FH12-12S-0.5SH(55)" (at 365.76 228.6 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "f8d3d303-9cd1-46ab-a2b2-40e2b99eff97")
+		)
+		(pin "10"
+			(uuid "c3e71e19-d8f9-44d9-967e-fbcd3965096e")
+		)
+		(pin "11"
+			(uuid "2b9c27b4-bcda-4ced-bcc7-f536cf3646bf")
+		)
+		(pin "12"
+			(uuid "549bbccc-62cf-4abc-a477-799360edb852")
+		)
+		(pin "2"
+			(uuid "c4ec3f67-eb83-4549-b1ee-9d1757eac8d4")
+		)
+		(pin "3"
+			(uuid "d8d7df88-c6bd-4908-8d14-04cd01f92a8f")
+		)
+		(pin "4"
+			(uuid "1620218a-e441-43b3-828e-71f63a44a406")
+		)
+		(pin "5"
+			(uuid "83e4f8df-b07d-452b-96cf-0f8991386d3d")
+		)
+		(pin "6"
+			(uuid "ed2dba00-001d-4214-b4b3-f0c3238e43d0")
+		)
+		(pin "7"
+			(uuid "24f26956-ce8a-49d1-b070-c7abeb2bffea")
+		)
+		(pin "8"
+			(uuid "9e58fd7c-31c1-4a4d-ad22-0d2262069ba9")
+		)
+		(pin "9"
+			(uuid "6e495104-cb81-4d44-962d-205cc2631155")
+		)
+		(pin "MP"
+			(uuid "ad515d2b-8e2e-436b-b329-95fe9f44275a")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "J6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "ELEC2_P"
+		(at 312.41999999999996 223.51999999999998 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d30d04e9-11e7-4416-ae6a-5cdde1a0f1ff")
+	)
+	(label "ELEC2_N"
+		(at 312.41999999999996 220.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d1dd8350-2fc0-4120-b0f9-568765866e80")
+	)
+	(label "ELEC2_REF"
+		(at 312.41999999999996 218.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c991c8bd-ee82-4c28-8eea-e891fc3b8bdf")
+	)
+	(label "ELEC3_P"
+		(at 312.41999999999996 241.29999999999998 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "17515433-243b-4dba-bde9-28eacd86fa2e")
+	)
+	(label "ELEC3_N"
+		(at 312.41999999999996 238.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2cd0eaad-a674-444d-bfdf-f0e0846f39df")
+	)
+	(label "ELEC3_REF"
+		(at 312.41999999999996 236.22 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "76d031d1-d243-4eb2-abfd-b3c9ce01fa40")
+	)
+	(label "AGND"
+		(at 360.68 215.9 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "67592054-9a39-4b8d-8ed1-8fe9b7d39811")
+	)
+	(label "ELEC_P"
+		(at 360.68 218.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7478e55c-db03-4806-993b-c71f00d18288")
+	)
+	(label "ELEC_N"
+		(at 360.68 220.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d5e55f7e-b80e-4495-adea-18a0885e61f3")
+	)
+	(label "ELEC_REF"
+		(at 360.68 223.51999999999998 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5472647c-e99e-442f-95ab-f9045c8c6fad")
+	)
+	(label "AGND"
+		(at 360.68 226.06 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "40ab7491-5d5e-454b-8d87-5b2a7117521a")
+	)
+	(label "ELEC2_P"
+		(at 360.68 228.6 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "77b1d346-920d-4372-8be3-9fc067ab112b")
+	)
+	(label "ELEC2_N"
+		(at 360.68 231.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "64f44fc8-3a60-4c82-ac43-a473bde17a78")
+	)
+	(label "ELEC2_REF"
+		(at 360.68 233.68 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "233e8297-4cf5-400a-b45f-0a22d3fdf059")
+	)
+	(label "AGND"
+		(at 360.68 236.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "fb935a4f-261d-48c5-b457-3ed4bf60604f")
+	)
+	(label "ELEC3_P"
+		(at 360.68 238.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a5bc6bd7-7ac4-48fe-9fa4-951fa8ce3421")
+	)
+	(label "ELEC3_N"
+		(at 360.68 241.29999999999998 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "401e6df9-5d4f-4fe9-b994-44469b5abc5f")
+	)
+	(label "ELEC3_REF"
+		(at 360.68 243.84 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "283a68f1-57c2-47f1-8d3a-44b901b41a55")
+	)
+	(label "AGND"
+		(at 365.76 248.92 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "dacf3977-1e1d-4257-b865-6858c85ed4cf")
+	)
+	(text "ELECTRODES: J1/J4/J5 TRS per channel (T +, R -, S REF).\nJ6 = 2 mm flip-lock FPC for a future flex array, in parallel\nwith the TRS jacks: use one or the other. J6 1/5/9 + MP = AGND guards.\nCH2/CH3 join the front end once the ADC choice is made."
+		(exclude_from_sim no)
+		(at 186 264 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "0fd9c76e-7251-4854-9a7f-81ba1c9d2800")
 	)
 	(sheet_instances
 		(path "/"

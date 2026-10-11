@@ -74,7 +74,15 @@ Net names follow the design report: `+3V3_A`, `AGND`, `VMID_RAW`, `VMID`,
   (no back-feed from BAT), or Q101 will not turn on.
 
 **Electrode input**
-- J_ELEC: 3.5 mm TRS jack (tip ELEC_P, ring ELEC_N, sleeve ELEC_REF).
+- J1 / J4 / J5: one 3.5 mm TRS jack per channel (tip ELECn_P, ring ELECn_N,
+  sleeve ELECn_REF), CUI SJ-3523-SMT, 9 electrodes total (Liam, 11 Oct 2026).
+- J6: Hirose FH12-12S-0.5SH flip-lock FPC (12 pins, 0.5 mm, 2 mm tall) for a
+  future flex-PCB electrode array, wired in parallel with the TRS jacks. Use
+  one or the other. Pinout: 1 AGND, 2-4 CH1 P/N/REF, 5 AGND, 6-8 CH2, 9 AGND,
+  10-12 CH3, MP AGND.
+- Channels 2 and 3 stop at the connectors until the ADC architecture is
+  chosen (ADS1298 vs three discrete chains). With a shared reference or
+  bias-drive electrode the count drops from 9 to 7.
 - R201/R202 100 kΩ series, R203/R204 10 MΩ to VMID, R205 100 kΩ ELEC_REF to VMID.
 - C201/C202 22 pF C0G to AGND, C203 220 pF C0G across IN_P/IN_N.
 - DNP footprints for low-leakage input clamps and lead-off comparators.
