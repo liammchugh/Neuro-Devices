@@ -1,7 +1,7 @@
 # Forehead EMG electrode flex, Rev A draft
 
 A single 2-layer polyimide flex that carries seven skin electrodes across the
-forehead and temple and runs back above the left ear to the main board's FPC
+forehead and temple and runs back above the right ear to the main board's FPC
 connector (J6, Hirose FH34SRJ-12S-0.5SH) at the back of the head.
 
 ![layout](docs/flex_layout.png)
@@ -26,13 +26,15 @@ pads, so the board is the source of truth for now.
 ## Electrode sites
 
 Coordinates are arc length along the band from the forehead midline (+ toward
-the subject's left) and height above the eyebrow line.
+the tail, which runs along the subject's right) and height above the eyebrow
+line. The tail side is `TAIL_SIDE` in `gen_flex.py`; it follows the main
+board's connector (see below).
 
 | Electrode | Net | Site (x, y) mm | Muscle and gesture | Pair axis |
 |---|---|---|---|---|
-| E1 / E2 | CH1 +/- | (30, 34) / (30, 14) | Left frontalis, above mid-pupil: brow raise | Vertical, along the fibres, 20 mm |
-| E3 / E4 | CH2 +/- | (-10, 8) / (-25, 8) | Right corrugator, just above the inner brow: frown | Horizontal, along the fibres, 15 mm |
-| E5 / E6 | CH3 +/- | (85, 34) / (85, 14) | Left anterior temporalis at the temple: jaw clench | Vertical, along the anterior fibres, 20 mm |
+| E1 / E2 | CH1 +/- | (30, 34) / (30, 14) | Right frontalis, above mid-pupil: brow raise | Vertical, along the fibres, 20 mm |
+| E3 / E4 | CH2 +/- | (-10, 8) / (-25, 8) | Left corrugator, just above the inner brow: frown | Horizontal, along the fibres, 15 mm |
+| E5 / E6 | CH3 +/- | (85, 34) / (85, 14) | Right anterior temporalis at the temple: jaw clench | Vertical, along the anterior fibres, 20 mm |
 | E7 | REF / RLD | (0, 37) | Upper midline forehead, between the frontalis bellies | Ø12 mm for lower contact impedance |
 
 Why these three:
@@ -47,7 +49,7 @@ Why these three:
   below the zygomatic arch and out of reach of a band; clench shows up
   strongly on anterior temporalis anyway.
 - One side per muscle is enough because these gestures are bilateral. The
-  corrugator pair is on the right and frontalis on the left to put distance
+  corrugator pair is on the left and frontalis on the right to put distance
   between them. Expect crosstalk anyway: corrugator and the lower frontalis
   overlap at the brow, so firmware should treat CH1/CH2 as a mixed pair.
 - REF at the upper midline sits over the thin aponeurosis between the two
@@ -96,19 +98,25 @@ noise if the dry contacts are not good enough.
 
 ## Mating with the main board
 
-The tail carries the main board's J6 pin order (hardware/emg-rev-a-kicad, 11
-Oct 2026): 1 AGND, 2/3 CH3 N/P, 4 REF, 5 AGND, 6/7 CH2 N/P, 8 REF, 9 AGND,
-10/11 CH1 N/P, 12 REF. The tab is 6.5 mm wide with 0.3 × 2.5 mm contacts at 0.5
-mm pitch.
+The tail carries the main board's J6 pin order (hardware/emg-rev-a-kicad,
+commit 57179a6): 1 AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2 P/N, 8 REF, 9
+AGND, 10/11 CH3 P/N, 12 REF. The tab is 6.5 mm wide with 0.3 × 2.5 mm contacts
+at 0.5 mm pitch. The crossover block re-orders lanes, so a later pin order
+change on the main board only means editing `PINS` and regenerating.
+
+J6 sits on the main board's F side at its right edge, rotated so the FPC
+enters from the right (mounting-tab side) with pin 1 toward the top of the
+board. Assuming the main board is worn with F facing out and its USB-C
+pointing down, that opening faces the subject's right, so the tail runs along
+the right side. Seen from outside, the tail arrives with its outer side (F) up
+and pin 1 at the top edge, which lands on J6 pin 1. The FH34SRJ makes contact
+on either face of the FPC, so contacts on F work.
 
 Check before ordering:
 
-- **Contact orientation.** The FH34SRJ takes contacts facing up or down, and
-  the two mirror the pin order. This tail has its contacts on F with pin 1 at
-  the top edge. Check against J6's placement on the main board that pin 1 of
-  the tail lands on J6 pin 1 when the flex lies against the head with its skin
-  side in. If it mirrors, swap the order in `PINS` and regenerate, or move the
-  contacts to B.
+- **Main board orientation on the head.** If it is worn the other way up or
+  with F facing the head, the tail must come from the other side or the pin
+  order mirrors: set `TAIL_SIDE` or reverse `PINS` and regenerate.
 - **Tail length.** `X_END` puts the connector 265 mm along the band from the
   midline, which assumes a 57 cm head and J6 about 20 mm short of the back
   centre. Measure on the real band and the main board.
@@ -122,7 +130,5 @@ Check before ordering:
 
 - Fit on a real head: brow-to-hairline height and where the band sits decide
   whether the 20 mm vertical pairs fit, or need to go to 15 mm.
-- Which side the tail and the temporalis pair go on (left now). Mirroring means
-  flipping the x coordinates in `gen_flex.py`.
-- Whether a second temporalis pair (right side) is worth a channel; the
+- Whether a second temporalis pair (left side) is worth a channel; the
   ADS1298 has five spare channels but J6 only carries three.

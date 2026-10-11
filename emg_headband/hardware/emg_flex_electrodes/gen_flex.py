@@ -6,9 +6,11 @@ Everything is parametric: edit the constants below and re-run
 to rewrite kicad/emg_flex_electrodes.kicad_pcb and docs/flex_layout.png.
 
 Design coordinates: x = arc length along the headband from the forehead
-midline (+x toward the subject's LEFT, where the tail leaves for the back of
-the head), y = height above the eyebrow line, both in mm. KiCad's y axis
-points down, so kx = x + OX, ky = OY - y.
+midline (+x toward the tail side, where the flex leaves for the back of the
+head), y = height above the eyebrow line, both in mm. TAIL_SIDE picks the
+subject's side the tail runs along. The board is drawn as seen from its outer
+(F) side, which is the front view of the forehead, so a right-side tail runs
+to -X in KiCad. KiCad's y axis points down: ky = OY - y.
 
 Needs: shapely, matplotlib (pip install shapely matplotlib).
 """
@@ -19,24 +21,29 @@ from shapely.geometry import Point, box
 from shapely.ops import unary_union
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OX, OY = 60.0, 120.0
+# Main board J6 faces the board's right edge (seen from outside, F side out,
+# USB-C down), which is the subject's right at the back of the head.
+TAIL_SIDE = "R"
+SIGN = 1 if TAIL_SIDE == "L" else -1   # front view: subject's left is +X
+OX, OY = (60.0 if SIGN > 0 else 340.0), 120.0
+T, O = TAIL_SIDE, ("R" if TAIL_SIDE == "L" else "L")   # tail side, other side
 
 # --- Connector (main board J6, Hirose FH34SRJ-12S-0.5SH, 0.5 mm pitch) -------
-# Pin order as on hardware/emg-rev-a-kicad (README, 11 Oct 2026).
-PINS = {1: "AGND", 2: "CH3N", 3: "CH3P", 4: "REF", 5: "AGND", 6: "CH2N",
-        7: "CH2P", 8: "REF", 9: "AGND", 10: "CH1N", 11: "CH1P", 12: "REF"}
+# Pin order as on hardware/emg-rev-a-kicad (commit 57179a6, 11 Oct 2026).
+PINS = {1: "AGND", 2: "CH1P", 3: "CH1N", 4: "REF", 5: "AGND", 6: "CH2P",
+        7: "CH2N", 8: "REF", 9: "AGND", 10: "CH3P", 11: "CH3N", 12: "REF"}
 NETS = ["", "AGND", "REF", "CH1P", "CH1N", "CH2P", "CH2N", "CH3P", "CH3N"]
 NET = {n: i for i, n in enumerate(NETS)}
 
 # --- Electrode sites ----------------------------------------------------------
 # (ref, net, x, y, pad diameter, label)
 ELECTRODES = [
-    ("E1", "CH1P", 30.0, 34.0, 8.0, "CH1+ FRONTALIS L"),
-    ("E2", "CH1N", 30.0, 14.0, 8.0, "CH1- FRONTALIS L"),
-    ("E3", "CH2P", -10.0, 8.0, 8.0, "CH2+ CORRUGATOR R"),
-    ("E4", "CH2N", -25.0, 8.0, 8.0, "CH2- CORRUGATOR R"),
-    ("E5", "CH3P", 85.0, 34.0, 8.0, "CH3+ TEMPORALIS L"),
-    ("E6", "CH3N", 85.0, 14.0, 8.0, "CH3- TEMPORALIS L"),
+    ("E1", "CH1P", 30.0, 34.0, 8.0, f"CH1+ FRONTALIS {T}"),
+    ("E2", "CH1N", 30.0, 14.0, 8.0, f"CH1- FRONTALIS {T}"),
+    ("E3", "CH2P", -10.0, 8.0, 8.0, f"CH2+ CORRUGATOR {O}"),
+    ("E4", "CH2N", -25.0, 8.0, 8.0, f"CH2- CORRUGATOR {O}"),
+    ("E5", "CH3P", 85.0, 34.0, 8.0, f"CH3+ TEMPORALIS {T}"),
+    ("E6", "CH3N", 85.0, 14.0, 8.0, f"CH3- TEMPORALIS {T}"),
     ("E7", "REF", 0.0, 37.0, 12.0, "REF / RLD"),
 ]
 DRILL = 1.5          # plated hole for a dome stud / rivet shank
@@ -74,7 +81,7 @@ def spread_y(pin):
 
 
 def K(x, y):
-    return (round(x + OX, 4), round(OY - y, 4))
+    return (round(OX + SIGN * x, 4), round(OY - y, 4))
 
 
 def uid():
@@ -163,9 +170,9 @@ def fp_fpc_tail():
     return f'''  (footprint "emg_flex:FPC_Tail_12P_P0.50mm_FH34SRJ" (layer "F.Cu") (at {kx} {ky})
     (descr "FPC tail for Hirose FH34SRJ-12S-0.5SH: 12 contacts on F.Cu, 0.3 x 2.5 mm, 0.5 mm pitch, tab width 6.5 mm. Needs a B-side stiffener to 0.30 +/- 0.03 mm total.")
     (attr exclude_from_pos_files exclude_from_bom)
-    (fp_text reference "J1" (at -4 -4.5) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15))))
-    (fp_text value "TO MAIN BOARD J6" (at -4 4.5) (layer "F.Fab") (effects (font (size 1 1) (thickness 0.15))))
-    (fp_text user "1" (at -2.4 -2.75) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.12))))
+    (fp_text reference "J1" (at {-4 * SIGN} -4.5) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15))))
+    (fp_text value "TO MAIN BOARD J6" (at {-4 * SIGN} 4.5) (layer "F.Fab") (effects (font (size 1 1) (thickness 0.15))))
+    (fp_text user "1" (at {-2.4 * SIGN} -2.75) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.12))))
 {chr(10).join(pads)}
   )
 '''
@@ -235,9 +242,9 @@ def write_pcb(shape, segs, vias, path):
         out.append(f'  (gr_circle (center {kx} {ky}) (end {kx + d / 2 + 1.0} {ky}) (stroke (width 0.1) (type solid)) (fill none) (layer "User.1"))\n')
         out.append(f'  (gr_circle (center {kx} {ky}) (end {kx + 2.0} {ky}) (stroke (width 0.1) (type solid)) (fill none) (layer "User.1"))\n')
     # labels
-    out.append(gr_text("FRONTALIS L (CH1)", 30, 43.5))
-    out.append(gr_text("TEMPORALIS L (CH3)", 85, 43.5))
-    out.append(gr_text("CORRUGATOR R (CH2)", -17.5, 0.8))
+    out.append(gr_text(f"FRONTALIS {T} (CH1)", 30, 43.5))
+    out.append(gr_text(f"TEMPORALIS {T} (CH3)", 85, 43.5))
+    out.append(gr_text(f"CORRUGATOR {O} (CH2)", -17.5, 0.8))
     out.append(gr_text("REF", 0, 46.5))
     out.append(gr_text("MIDLINE", 0, 17.2, size=0.8))
     out.append(gr_text("OUTER SIDE  -  SKIN SIDE IS B (ELECTRODES)", 175, TAIL_YC, size=1.5))
@@ -253,6 +260,7 @@ def write_drawing(shape, segs, vias, path):
     import matplotlib.pyplot as plt
     from matplotlib.patches import Circle, Polygon
 
+    HA = "left" if SIGN > 0 else "right"   # text alignment in the mirrored view
     fig, ax = plt.subplots(figsize=(18, 4.6), dpi=150)
     ax.add_patch(Polygon(list(shape.exterior.coords), closed=True, fc="#f3c26b", ec="#8a5a00", lw=1.2))
     for layer, net, (x1, y1), (x2, y2) in segs:
@@ -266,19 +274,22 @@ def write_drawing(shape, segs, vias, path):
         if y < 12:   # corrugator pair sits close together: label below
             ax.text(x, y - d / 2 - 1.5, label.replace(" ", "\n", 1), fontsize=6.5, ha="center", va="top")
         else:
-            ax.text(x + d / 2 + 1, y, label, fontsize=7, va="center")
+            ax.text(x + d / 2 + 1, y, label, fontsize=7, va="center", ha=HA)
     ax.axhline(0, color="#999", lw=0.8, ls="--")
-    ax.text(-38, 0.6, "eyebrow line", fontsize=7, color="#666")
+    ax.text(-38, 0.6, "eyebrow line", fontsize=7, color="#666", ha="right" if SIGN > 0 else "left")
     ax.axvline(0, color="#999", lw=0.8, ls=":")
-    ax.text(0.8, -10, "forehead midline", fontsize=7, color="#666")
+    ax.text(0.8, -10, "forehead midline", fontsize=7, color="#666", ha=HA)
     ax.annotate("", xy=(X_END, 45), xytext=(130, 45), arrowprops=dict(arrowstyle="->", color="#666"))
-    ax.text(140, 46.5, "tail runs above the left ear to main board J6 at the back of the head", fontsize=8, color="#444")
-    ax.text(X_END - 18, TAIL_YC - 7.5, "FPC tab, 12P 0.5 mm\nPI stiffener to 0.3 mm", fontsize=7)
-    ax.text(98, 44, "crossover\n(B.Cu jumps)", fontsize=7, color="#2a63b5")
+    side = "left" if TAIL_SIDE == "L" else "right"
+    ax.text(140, 46.5, f"tail runs above the {side} ear to main board J6 at the back of the head", fontsize=8, color="#444", ha=HA)
+    ax.text(X_END - 4, TAIL_YC - 9.5, "FPC tab, 12P 0.5 mm, pin 1 at top\nPI stiffener to 0.3 mm", fontsize=7, ha=HA)
+    ax.text(98, 44, "crossover\n(B.Cu jumps)", fontsize=7, color="#2a63b5", ha=HA)
     ax.set_aspect("equal")
     ax.set_xlim(-45, X_END + 5)
     ax.set_ylim(-12, 52)
-    ax.set_xlabel("arc length along the band from forehead midline (mm, + = subject's left)")
+    if SIGN < 0:
+        ax.invert_xaxis()   # front view: the subject's right is on the viewer's left
+    ax.set_xlabel(f"arc length along the band from forehead midline (mm, + = toward the tail, subject's {side})")
     ax.set_ylabel("height above brow (mm)")
     ax.set_title("EMG forehead electrode flex, Rev A draft (outer side view; red = F.Cu traces, blue = B.Cu jumpers; "
                  "B.Cu hatched AGND shield not drawn)", fontsize=10)
