@@ -1,0 +1,40 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2
+      },
+      "rules": {
+        "min_clearance": 0.15,
+        "min_copper_edge_clearance": 0.3,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.55,
+        "min_through_hole_diameter": 0.3,
+        "min_via_annular_width": 0.125,
+        "min_hole_clearance": 0.25,
+        "min_hole_to_hole": 0.25
+      },
+      "rule_severities": {
+        "lib_footprint_issues": "ignore",
+        "lib_footprint_mismatch": "ignore"
+      }
+    }
+  },
+  "meta": {
+    "filename": "emg_flex_electrodes.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      }
+    ],
+    "meta": { "version": 3 }
+  }
+}
