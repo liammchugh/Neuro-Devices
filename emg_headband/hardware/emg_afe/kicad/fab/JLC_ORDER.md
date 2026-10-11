@@ -56,7 +56,7 @@ corrected in `emg_wearable_revA_cpl_jlc.csv`, from JLC's preview on 11 Oct 2026:
 
 | Part | KiCad rotation | JLC rotation |
 |---|---|---|
-| J1 (jack) | -90 | 180 |
+| J1 (jack) | -90 | 180, and Mid X 104.0 → 102.9 (JLC's model origin sits 1.1 mm off KiCad's) |
 | U1 (ADS1298, TQFP-64) | 180 | 90 |
 | U6, U8, U9 (SOT-23-5), U7 (SOT-23-6) | 0 | 270 |
 | Q101 (SOT-23) | 0 | 180 |
