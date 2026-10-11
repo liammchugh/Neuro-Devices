@@ -1,0 +1,5 @@
+(version 1)
+# FPC contacts run to the tab edge; JLC keeps 0.2 mm from the edge.
+(rule "FPC tail contacts"
+  (constraint edge_clearance (min 0.15mm))
+  (condition "A.Parent == 'J1'"))

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "emg_flex")(type "KiCad")(uri "${KIPRJMOD}/emg_flex.kicad_sym")(options "")(descr "Electrode flex symbols"))
+)
