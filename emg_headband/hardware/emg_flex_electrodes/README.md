@@ -86,7 +86,7 @@ direction. Corrugator is a small muscle, so its pair is at 15 mm. Pads are
 - 2-layer polyimide, 0.11 mm, ENIG, yellow or black coverlay (JLCPCB flex).
   The outline is 298 × 43 mm, inside JLC's 234 × 490 mm flex limit.
 - Skin side is **B**. Electrodes are Ø8 mm (REF Ø12) ENIG pads exposed on B,
-  with a 3.1 mm plated hole for an optional domed rivet soldered on the outer
+  with a 2.7 mm plated hole for an optional domed rivet soldered on the outer
   (F) side.
 - Signals run on **F** (outer). **B** carries a hatched AGND shield between
   the traces and the skin, so traces do not pick up the skin they cross and
@@ -96,29 +96,29 @@ direction. Corrugator is a small muscle, so its pair is at 15 mm. Pads are
   channels. A crossover block in front of the ear re-orders them with short
   B.Cu jumps so every electrode can leave the bundle without crossings.
 - The three REF pins are joined into one REF net at the crossover.
-- Stiffeners (drawn on the `Stiffener` user layer): 0.2 mm PI on the B side
-  of the FPC tab, giving about 0.31 mm with the 0.11 mm flex (Hirose asks for
-  0.30 ± 0.03 mm). Rings behind each electrode on the F side (0.2 mm FR4 with a
-  5 mm hole for the rivet shank) stop the dome from peeling the pad when the band
-  flexes.
+- Stiffener (drawn on the `Stiffener` user layer, exported as
+  `fab/*-Stiffener.gbr`): 0.2 mm PI on the B side of the FPC tab, giving
+  about 0.31 mm with the 0.11 mm flex (Hirose asks for 0.30 ± 0.03 mm). Rev 1
+  has no stiffeners at the electrodes; the foam disc behind each lobe supports
+  the rivet. Add FR4 rings there in rev 2 if pads start to lift.
 
 ## Electrodes
 
 Rev 1 needs no custom parts. Each site is an ENIG pad (Ø8 mm, REF Ø12 mm)
-with a 3.1 mm plated hole, and works two ways:
+with a 2.7 mm plated hole, and works two ways:
 
 1. **Flat pad (default, nothing to buy).** The gold pad is the electrode.
    On the hairless forehead this is enough electrically; what matters is
    steady pressure, so put a 2 to 3 mm closed-cell foam disc behind each
    electrode lobe (between flex and band). Many forehead headbands use flat
    contacts this way.
-2. **Domed rivet (if the band slides or contact is poor).** A standard DIN
-   660 / ISO 1051 round-head solid rivet, 3 mm, in copper (or brass): head
-   Ø5.2 mm, 1.8 mm tall, a ready-made dome. Push it through the hole from the
-   skin side, trim the shank to about 1 mm and solder it to the pad on the
-   outer side. Copper solders easily and is skin-safe; it tarnishes, so wipe
-   it before use or tin the head. The 2.5 mm size (Ø4.4 × 1.5 mm head) is a
-   gentler option but needs a 2.6 mm hole (`DRILL` in `gen_flex.py`).
+2. **Domed rivet (Liam's pick for rev 1).** A standard DIN 660 / ISO 1051
+   round-head solid rivet, 2.5 × 3 mm, in copper: head Ø4.4 mm, 1.5 mm
+   tall, a ready-made dome. Push it through the hole from the skin side, trim
+   the shank flush to about 1 mm and solder it to the pad on the outer side
+   (a hot iron; the rivet sinks heat). Copper solders easily and is skin-safe;
+   it tarnishes, so wipe it before use or tin the head. The 3 mm size
+   (Ø5.2 × 1.8 mm head) needs `DRILL = 3.1` in `gen_flex.py`.
 
 Other stock options, not recommended for rev 1:
 
@@ -133,10 +133,34 @@ rev 2 upgrade if the rivets work but feel too sharp.
 Dry contacts improve once the skin is a little moist; expect higher impedance
 and more motion artefact in the first minutes.
 
+## Ordering at JLCPCB
+
+Upload `kicad/fab/emg_flex_electrodes_gerbers.zip` (gerbers, Excellon drill,
+stiffener layer) and choose:
+
+| Option | Value |
+|---|---|
+| Base material | Flex |
+| Layers | 2 |
+| Size | 303 × 43 mm (detected from the outline) |
+| Thickness | 0.11 mm |
+| Copper | 1/3 oz (0.25 mm tracks and gaps) |
+| Coverlay | Yellow |
+| Surface finish | ENIG, 1 µ" |
+| Stiffener | Polyimide, 0.2 mm, one area: the FPC tab on the back (B) side, as drawn in the Stiffener gerber |
+| Assembly | None (rivets and foam are fitted by hand) |
+
+The board has 7 electrode pads with 2.7 mm plated holes, 0.3 mm vias and
+0.25 mm tracks, all within JLC's regular flex rules. Before ordering, check the
+tab against the Hirose FPC drawing and the main board's J6 orientation (below).
+
+Rivets: DIN 660 round head, copper, 2.5 × 3 mm (head Ø4.4 × 1.5 mm), one per
+electrode, 7 per board.
+
 ## Mating with the main board
 
 The tail carries the main board's J6 pin order (hardware/emg-rev-a-kicad,
-commit 57179a6): 1 AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2 P/N, 8 REF, 9
+commit c72bb90): 1 AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2 P/N, 8 REF, 9
 AGND, 10/11 CH3 P/N, 12 REF. The tab is 6.5 mm wide with 0.3 × 2.5 mm contacts
 at 0.5 mm pitch. The crossover block re-orders lanes, so a later pin order
 change on the main board only means editing `PINS` and regenerating.
@@ -155,8 +179,9 @@ Check before ordering:
   with F facing the head, the tail must come from the other side or the pin
   order mirrors: set `TAIL_SIDE` or reverse `PINS` and regenerate.
 - **Tail length.** `X_END` puts the tab end 270 mm along the band from the
-  midline: half of Liam's 58 cm head (290 mm), minus about 26 mm from the back
-  centre to J6's contacts on the 57 mm main board, plus about 6 mm slack.
+  midline: half of Liam's 58 cm head (290 mm), minus about 27 mm from the back
+  centre to J6's contacts on the 62.5 mm main board (c72bb90), plus about 7 mm
+  slack.
   Recheck if the main board layout moves J6.
 - **Elastic bands.** A flex does not stretch. If the band is elastic, fix the
   flex at the forehead and at the connector and leave slack (or a sewn S-loop)

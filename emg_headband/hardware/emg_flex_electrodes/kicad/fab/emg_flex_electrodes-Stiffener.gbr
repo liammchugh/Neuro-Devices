@@ -1,0 +1,21 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,7.0.11+dfsg-1build4*%
+%TF.CreationDate,2026-10-11T17:22:04+00:00*%
+%TF.ProjectId,emg_flex_electrodes,656d675f-666c-4657-985f-656c65637472,A-draft*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Other,User*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 7.0.11+dfsg-1build4) date 2026-10-11 17:22:04*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%ADD10C,0.100000*%
+G04 APERTURE END LIST*
+D10*
+X70000000Y-82750000D02*
+X76000000Y-82750000D01*
+X76000000Y-89250000D01*
+X70000000Y-89250000D01*
+X70000000Y-82750000D01*
+M02*
