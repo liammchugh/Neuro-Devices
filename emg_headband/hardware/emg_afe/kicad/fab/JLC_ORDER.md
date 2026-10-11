@@ -44,7 +44,7 @@ Check each of these against the silkscreen or pad outline, and rotate in JLC's t
 - **U1, ADS1298 (TQFP-64):** the pin 1 dot matches the board's pin 1 marker.
 - **U2, ESP32-S3 module:** the antenna end is at the left board edge, over the copper-free area.
 - **J7, USB-C:** the opening faces the bottom board edge.
-- **J6, FPC connector:** the cable opening faces the right board edge and the solder leads face inboard, toward the filter caps. KiCad's 90° is already correct for JLC.
+- **J6, FPC connector:** the cable opening faces the right board edge and the solder leads face inboard, toward the filter caps. KiCad's 90° is already correct for JLC. Its CPL Mid X is moved from the footprint origin (108.0, at the signal-pad row) to the part centre (110.2), because JLC centres the model on that point.
 - **J1, jack:** the plug opening faces the right board edge.
 - **SOT-23 and SOT-23-5 parts** (U6, U7, U8, U9, Q101): pin 1 matches.
 - **D101 diode:** the cathode band matches the silkscreen.
