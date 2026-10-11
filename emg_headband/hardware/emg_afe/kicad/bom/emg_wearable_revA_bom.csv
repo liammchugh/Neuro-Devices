@@ -12,7 +12,7 @@
 "J3","LiPo (protected)","Connector_JST:JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal","C173752","1",""
 "J4","CH2 (TRS)","Connector_Audio:Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal","C4991872","1",""
 "J5","CH3 (TRS)","Connector_Audio:Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal","C4991872","1",""
-"J6","FLEX ARRAY (FPC 12P 0.5mm)","Connector_FFC-FPC:Hirose_FH12-12S-0.5SH_1x12-1MP_P0.50mm_Horizontal","C88360","1",""
+"J6","FLEX ARRAY (FPC 12P 0.5mm, 1mm tall)","emg_wearable:Hirose_FH34SRJ-12S-0.5SH_1x12-1MP_P0.50mm_Horizontal","C424659","1",""
 "Q101","AO3401A","Package_TO_SOT_SMD:SOT-23","C15127","1",""
 "R101","1M","Resistor_SMD:R_0603_1608Metric","C22935","1",""
 "R102","330k","Resistor_SMD:R_0603_1608Metric","C23137","1",""

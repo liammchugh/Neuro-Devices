@@ -88,11 +88,12 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
 **Electrodes**
 - J1 / J4 / J5: CUI SJ-3523-SMT 3.5 mm TRS jacks, one per channel (tip ELECn_P,
   ring ELECn_N, sleeve `RLD_ELEC`).
-- J6: Hirose FH12-12S-0.5SH flip-lock FPC (12 pins, 0.5 mm, 2 mm tall), in
-  parallel with the jacks: use one or the other. Pinout: 1 AGND, 2/3 CH1 P/N,
-  4 REF, 5 AGND, 6/7 CH2, 8 REF, 9 AGND, 10/11 CH3, 12 REF, MP AGND.
-  A 1 mm Hirose FH34SRJ-12S-0.5SH (C424659, well stocked) fits the headband
-  better but needs a custom footprint; swap it in at layout.
+- J6: Hirose FH34SRJ-12S-0.5SH(50) back-flip FPC (C424659; 12 pins, 0.5 mm,
+  1.0 mm tall), in parallel with the jacks: use one or the other. Pinout: 1
+  AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2, 8 REF, 9 AGND, 10/11 CH3, 12 REF,
+  MP AGND. Footprint `emg_wearable:Hirose_FH34SRJ-12S-0.5SH_...` is drawn from
+  the Hirose land pattern; check it against the datasheet before ordering. The
+  FPC enters from the signal-pad side; contact 1 is at +X.
 
 **ADS1298 (U1)**
 - IN1 to IN3 from the input RC. IN4 to IN8 and TESTP_PACE_OUT1/2 to AVDD, as
@@ -118,7 +119,7 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
 | LP5907MFX-3.0/NOPB | C475492 | extended |
 | AO3401A, B5819W | C15127, C8598 | basic |
 | SJ-3523-SMT-TR ×3 | C4991872 | extended, 737 in stock; PJ-320D (C431535) is a fallback with a different footprint |
-| FH12-12S-0.5SH(55) | C88360 | extended |
+| FH34SRJ-12S-0.5SH(50) | C424659 | extended, 1 mm tall, custom footprint |
 | ISO7721DWVR | C2864013 | extended, DNP in Rev A |
 
 Every JLC-placed symbol in `kicad/emg_wearable_revA.kicad_sch` carries an

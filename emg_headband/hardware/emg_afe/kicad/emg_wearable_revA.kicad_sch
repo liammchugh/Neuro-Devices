@@ -8549,7 +8549,7 @@
 				)
 			)
 		)
-		(property "Value" "FLEX ARRAY (FPC 12P 0.5mm)"
+		(property "Value" "FLEX ARRAY (FPC 12P 0.5mm, 1mm tall)"
 			(at 30.48 212.09 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8560,7 +8560,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_FFC-FPC:Hirose_FH12-12S-0.5SH_1x12-1MP_P0.50mm_Horizontal"
+		(property "Footprint" "emg_wearable:Hirose_FH34SRJ-12S-0.5SH_1x12-1MP_P0.50mm_Horizontal"
 			(at 30.48 228.6 0)
 			(hide yes)
 			(show_name no)
@@ -8593,10 +8593,10 @@
 				)
 			)
 		)
-    (property "LCSC" "C88360" (at 30.48 228.6 0)
+    (property "LCSC" "C424659" (at 30.48 228.6 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "MPN" "Hirose FH12-12S-0.5SH(55)" (at 30.48 228.6 0)
+    (property "MPN" "Hirose FH34SRJ-12S-0.5SH(50)" (at 30.48 228.6 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"

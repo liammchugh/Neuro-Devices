@@ -1,0 +1,150 @@
+(footprint "Hirose_FH34SRJ-12S-0.5SH_1x12-1MP_P0.50mm_Horizontal"
+  (version 20241229)
+  (generator "kicad-mcp")
+  (generator_version "9.0")
+  (layer "F.Cu")
+  (descr "Hirose FH34SRJ-12S-0.5SH(50), 12 contacts, 0.5 mm pitch, 1.0 mm tall, back-flip ZIF, top and bottom contact. Land pattern from the Hirose datasheet (Aug 2019, p.4): signal pads 0.3 x 0.8, mounting pads 0.4 x 0.8, E=7.1, F=7.9, 3.3 from signal pad edge to mounting pad edge. FPC enters from the signal-pad side (-Y). Check against the datasheet before ordering.")
+  (tags "FPC FFC Hirose FH34SRJ 0.5mm 12pin")
+
+  (property "Reference" "REF**" (at 0 -1.3 0)
+    (layer "F.SilkS")
+    (uuid "a38739cd-6f6e-4a80-b516-175b336778b3")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Value" "Hirose_FH34SRJ-12S-0.5SH_1x12-1MP_P0.50mm_Horizontal" (at 0 5.4 0)
+    (layer "F.Fab")
+    (uuid "e1a2f5ae-0d8c-415a-9db9-0baad177cbce")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Datasheet" "" (at 0 0 0)
+    (layer "F.Fab")
+    (uuid "eb28790e-a7cb-4cfa-bc6b-809b216d019e")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+
+  (fp_rect
+    (start -4.55 -0.3)
+    (end 4.55 4.6)
+    (stroke (width 0.05) (type default))
+    (fill none)
+    (layer "F.CrtYd")
+    (uuid "7c09b786-8d01-4036-aeff-c53bd0ec3b3c")
+  )
+
+  (fp_rect
+    (start -4.25 1.05)
+    (end 4.25 4.3)
+    (stroke (width 0.12) (type default))
+    (fill none)
+    (layer "F.SilkS")
+    (uuid "182eab1f-e628-4d06-8c8b-9bfab5ad9424")
+  )
+
+  (fp_rect
+    (start -4 0.75)
+    (end 4 4.05)
+    (stroke (width 0.1) (type default))
+    (fill none)
+    (layer "F.Fab")
+    (uuid "fce994bc-9b45-464a-8a97-c1edfd8d8369")
+  )
+
+  (pad "1" smd rect
+    (at 2.75 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "6fa46caf-79fe-4de3-a5df-a8b250195c93")
+  )
+
+  (pad "2" smd rect
+    (at 2.25 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "53512555-f477-4715-a89e-a8e88b2a982a")
+  )
+
+  (pad "3" smd rect
+    (at 1.75 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "92ffaecb-5b46-4489-b487-2deb938a2708")
+  )
+
+  (pad "4" smd rect
+    (at 1.25 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "d24391eb-b5ef-4e57-aadb-e55b88bb445c")
+  )
+
+  (pad "5" smd rect
+    (at 0.75 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "47fe01e3-e648-47f1-979f-6e76e57756e2")
+  )
+
+  (pad "6" smd rect
+    (at 0.25 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "5dafdbca-eae4-46fc-bdbb-3d528e18387e")
+  )
+
+  (pad "7" smd rect
+    (at -0.25 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "b04eaf16-0457-440b-8d86-acf5b1aeb20b")
+  )
+
+  (pad "8" smd rect
+    (at -0.75 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "616c616f-ad8c-4736-9196-65565a6bf424")
+  )
+
+  (pad "9" smd rect
+    (at -1.25 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "f3de067f-a40e-4d21-9746-e2b905ea7f6a")
+  )
+
+  (pad "10" smd rect
+    (at -1.75 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "7968c001-36c3-4643-a7f6-7351576b5c46")
+  )
+
+  (pad "11" smd rect
+    (at -2.25 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "ff7eab5d-a850-49b6-8f59-ad8ba83775fb")
+  )
+
+  (pad "12" smd rect
+    (at -2.75 0.4)
+    (size 0.3 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "aa255cdb-6447-45cb-80c3-d9f86439c167")
+  )
+
+  (pad "MP" smd rect
+    (at 3.75 3.7)
+    (size 0.4 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "715916e6-5762-4a9d-876b-fd321feae6fe")
+  )
+
+  (pad "MP" smd rect
+    (at -3.75 3.7)
+    (size 0.4 0.8)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "bd5c5661-daeb-4b22-ba9a-08296d8db17f")
+  )
+
+)
