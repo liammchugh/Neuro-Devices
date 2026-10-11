@@ -117,9 +117,10 @@ Check before ordering:
 - **Main board orientation on the head.** If it is worn the other way up or
   with F facing the head, the tail must come from the other side or the pin
   order mirrors: set `TAIL_SIDE` or reverse `PINS` and regenerate.
-- **Tail length.** `X_END` puts the connector 265 mm along the band from the
-  midline, which assumes a 57 cm head and J6 about 20 mm short of the back
-  centre. Measure on the real band and the main board.
+- **Tail length.** `X_END` puts the tab end 270 mm along the band from the
+  midline: half of Liam's 58 cm head (290 mm), minus about 26 mm from the back
+  centre to J6's contacts on the 57 mm main board, plus about 6 mm slack.
+  Recheck if the main board layout moves J6.
 - **Elastic bands.** A flex does not stretch. If the band is elastic, fix the
   flex at the forehead and at the connector and leave slack (or a sewn S-loop)
   along the tail.

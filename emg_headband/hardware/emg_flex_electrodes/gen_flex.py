@@ -65,7 +65,9 @@ SPREAD_PITCH = 1.0
 X_VIA0, X_VIA_STEP = 102.0, 1.4   # crossover via columns
 X_GND_VIA = 115.5
 X_SPREAD0, X_SPREAD1 = 118.0, 122.0
-X_END = 265.0        # tail end (connector edge); trim to fit the band
+# Tail end: half of a 58 cm head (290 mm) minus 26 mm from the back centre
+# to J6 contacts on the 57 mm main board, plus ~6 mm slack.
+X_END = 270.0
 TAB_LEN = 6.0        # stiffened FPC tab
 TAB_W = 6.5          # Hirose FH34SRJ-12S FPC width "G" = 6.5 +/- 0.05
 FINGER = (2.5, 0.3)  # exposed contact length x width
