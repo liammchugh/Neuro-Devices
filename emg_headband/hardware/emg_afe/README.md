@@ -40,7 +40,7 @@ until the isolation checks in "Bring-up" pass.
 | Front end | ADS1298 (8 ch, 24-bit, PGA, RLD, lead-off), CH1 to CH3 used, CH4 to CH8 tied to AVDD and powered down | Liam, 11 Oct 2026 |
 | Sample rate | 4 kSPS (or 8 kSPS) from the ADS1298, decimate in firmware | Reviews |
 | Filtering | Firmware: HPF about 0.5 Hz for wideband capture, 20 to 450 Hz for EMG features | Liam, 11 Oct 2026 |
-| Input network | 22 kΩ series + 1 nF C0G to AGND per input (≈ 7 kHz). The ADS1298 modulator runs at 512 kHz, so no higher-order anti-alias filter is needed | Datasheet |
+| Input network | 22 kΩ series + 100 pF C0G to AGND per input (≈ 72 kHz; kept small for dry-electrode CMRR). The ADS1298 modulator runs at 512 kHz, so no higher-order anti-alias filter is needed | Datasheet |
 | Reference / RLD | RLDOUT with 1 MΩ ∥ 1.5 nF feedback (datasheet), 330 kΩ series to the REF electrode(s), DC fault current < 10 µA | Datasheet, critic review |
 | Schematic | Flat, one A3 sheet | Review 2 |
 
@@ -102,7 +102,7 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
   signal pads and back-flip actuator are on the inboard side.
 
 **ADS1298 (U1)**
-- IN1 to IN3 from the input RC. IN4 to IN8 and TESTP_PACE_OUT1/2 to AVDD, as
+- IN1 to IN3 from the input RC (22 kΩ + 100 pF C0G). IN4 to IN8 and TESTP_PACE_OUT1/2 to AVDD, as
   the datasheet asks for unused analog pins.
 - Internal 2.4 V reference: VREFP 10 µF + 100 nF to AGND, VREFN to AGND.
 - VCAP1 22 µF, VCAP2/3/4 1 µF to AGND. AVDD 10 µF + 2× 100 nF, DVDD 1 µF +

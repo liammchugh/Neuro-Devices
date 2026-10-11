@@ -84,6 +84,23 @@ Findings:
   - Panel: 3-up, 79 mm side.
   - Assembly: 2 panels assembled, Confirm Parts Placement: Yes.
 
+## Added after the adversarial pre-order check
+
+- **Done: input caps C201–C206 changed from 1 nF to 100 pF C0G (C14858, basic part).**
+  With dry electrodes (MΩ at 50/60 Hz), 1 nF to ground forms a large,
+  mismatched divider with the electrode impedance. That converts mains
+  common-mode into differential hum. 100 pF is 26 MΩ at 60 Hz, so the
+  mismatch effect shrinks about 10×. The RC corner moves to about 72 kHz,
+  still far below the 512 kHz modulator.
+- **Open: board material.** Parts in the two unstiffened zones (the power
+  column with SOT-23s, and the filter block) can crack if the board actually
+  bends. Options:
+  - Rigid 0.8 mm FR4 with the same gerbers (the stiffener layer is ignored).
+    The electrodes and their flex already conform to the head, and a 2.5"
+    board sits fine on padding.
+  - Keep flex, with one stiffener over the whole board.
+  - Keep flex as drawn and never bend it in those zones.
+
 ## Recommended changes before ordering
 
 1. **On/off: MSK-12C02 slide switch (C431540, 187k in stock).** Side-actuated, 8 × 2.8 mm, on the bottom edge beside the power column.

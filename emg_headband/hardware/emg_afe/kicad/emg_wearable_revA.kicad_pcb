@@ -2021,7 +2021,7 @@
 				)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 0 1.43 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -3187,7 +3187,7 @@
 				)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 0 1.43 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -6257,7 +6257,7 @@
 				)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 0 1.43 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -7068,7 +7068,7 @@
 				)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 0 1.43 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -8472,7 +8472,7 @@
 				)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 0 1.43 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -10483,7 +10483,7 @@
 				)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 0 1.43 180)
 			(layer "F.Fab")
 			(hide yes)

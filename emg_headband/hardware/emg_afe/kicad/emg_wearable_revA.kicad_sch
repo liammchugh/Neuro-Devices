@@ -11707,7 +11707,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 116.84 128.26999999999998 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11751,7 +11751,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C163508"
+		(property "LCSC" "C14858"
 			(at 116.84 132.08 0)
 			(effects
 				(font
@@ -11797,7 +11797,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 116.84 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11841,7 +11841,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C163508"
+		(property "LCSC" "C14858"
 			(at 116.84 144.78 0)
 			(effects
 				(font
@@ -11887,7 +11887,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 116.84 152.39999999999998 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11931,7 +11931,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C163508"
+		(property "LCSC" "C14858"
 			(at 116.84 157.48 0)
 			(effects
 				(font
@@ -11977,7 +11977,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 116.84 166.36999999999998 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12021,7 +12021,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C163508"
+		(property "LCSC" "C14858"
 			(at 116.84 170.18 0)
 			(effects
 				(font
@@ -12067,7 +12067,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 116.84 177.79999999999998 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12111,7 +12111,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C163508"
+		(property "LCSC" "C14858"
 			(at 116.84 182.88 0)
 			(effects
 				(font
@@ -12157,7 +12157,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1nF C0G"
+		(property "Value" "100pF C0G"
 			(at 116.84 191.76999999999998 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12201,7 +12201,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C163508"
+		(property "LCSC" "C14858"
 			(at 116.84 195.58 0)
 			(effects
 				(font
@@ -13105,7 +13105,7 @@
 		)
 		(uuid "e08130be-8f1c-49c2-8e0d-8bad9d8cd4cf")
 	)
-	(text "INPUT RC: 22k series (limits fault and plug-insertion current) + 1nF C0G to AGND, ~7 kHz.\nADS1298 oversamples at 512 kHz, so this is the only anti-alias filter needed."
+	(text "INPUT RC: 22k series (limits fault and plug-insertion current) + 100pF C0G to AGND, ~72 kHz.\nKept small so high-impedance dry electrodes do not turn mains common-mode into differential hum.\nADS1298 oversamples at 512 kHz, so this is the only anti-alias filter needed."
 		(exclude_from_sim no)
 		(at 70 120 0)
 		(effects
