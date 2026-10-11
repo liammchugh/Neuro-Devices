@@ -75,6 +75,14 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
   pull-down) join at `VSYS`. USB present: Q101 is off and VSYS ≈ 4.7 V from
   USB. USB absent: Q101 is on and VSYS = VBAT. Both: USB carries the load while
   U8 charges the battery.
+- **On/off:** SW1 (MSK12C02 side slide switch, lever out of the bottom edge
+  next to the filter block) sits between the battery and Q101. Off: the cell
+  is fully disconnected from the system (0 µA); USB still powers the board and
+  U8 still charges the cell. Slide toward the "ON" label to turn it on.
+- **Battery monitor:** VBAT_SYS / 2 (1 MΩ / 1 MΩ, 100 nF) into IO10
+  (ADC1_CH9); draws 2 µA only while on.
+- **Charge LED:** D102 (red) from VBUS through 1 kΩ into the MCP73831 STAT
+  pin; lit while charging, off when full or without USB.
 - `+3V3` (ESP32-S3, ADS1298 DVDD) from U9 AP2112K-3.3 (600 mA) on VSYS.
 - `+3V0_A` (ADS1298 AVDD) from a dedicated low-noise LDO (U6, LP5907MFX-3.0,
   6.5 µVrms, 82 dB PSRR at 1 kHz) on VSYS. EN is tied to `+3V3`, so the AFE is

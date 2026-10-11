@@ -5,7 +5,9 @@ Scope: goals, schematic, layout, BOM and JLC placement for
 
 ## Verdict
 
-The board is ready to order **except for power on/off**. With no switch, the
+**Update, later on 11 Oct:** the on/off switch, battery monitor and charge LED below are now in the design, and the input caps are 100 pF. Re-checked: ERC 0 errors, DRC 0 errors, all nets routed. The board is ready to order once the new parts look right in JLC's preview.
+
+Original verdict: the board was ready to order **except for power on/off**. With no switch, the
 board is always on while a battery is soldered in. The ESP32 can deep-sleep,
 but the ADS1298 and both regulators keep drawing current. Two small additions
 are worth making at the same time (see "Recommended changes").
@@ -92,7 +94,8 @@ Findings:
   common-mode into differential hum. 100 pF is 26 MΩ at 60 Hz, so the
   mismatch effect shrinks about 10×. The RC corner moves to about 72 kHz,
   still far below the 512 kHz modulator.
-- **Open: board material.** Parts in the two unstiffened zones (the power
+- **Board material: Liam chose to keep the flex configuration.** The stiffener now also covers the slide switch, and it has holes at every peg and USB-C shell tab.
+- **Board material (background).** Parts in the two unstiffened zones (the power
   column with SOT-23s, and the filter block) can crack if the board actually
   bends. Options:
   - Rigid 0.8 mm FR4 with the same gerbers (the stiffener layer is ignored).

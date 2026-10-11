@@ -7210,6 +7210,397 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Switch:SW_SPDT"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_SPDT"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Switch, single pole double throw"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_SPDT_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.651 0.254) (xy 1.651 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 -2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPDT_1_1"
+				(rectangle
+					(start -3.175 3.81)
+					(end 3.175 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:LED"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
@@ -8168,16 +8559,6 @@
 			(justify right bottom)
 		)
 		(uuid "ffd896cb-2f08-408a-8037-70ae6163a5ff")
-	)
-	(label "VBAT"
-		(at 106.68 63.5 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "cbab0819-9c49-440b-ad39-37e8a63101f9")
 	)
 	(label "VBUS"
 		(at 88.9 64.77 90)
@@ -13298,9 +13679,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C2913206" (at 101.6 350.52 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C2913206"
+			(at 101.6 350.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ce5d0522-ec4a-4be8-a2b2-623e93dea0ab")
 		)
@@ -13569,12 +13956,24 @@
 				)
 			)
 		)
-    (property "LCSC" "C165948" (at 25.4 330.2 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
-    (property "MPN" "HRO TYPE-C-31-M-12" (at 25.4 330.2 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C165948"
+			(at 25.4 330.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "HRO TYPE-C-31-M-12"
+			(at 25.4 330.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "A1"
 			(uuid "c67ccebf-53bb-4925-9ff2-cc9bfe4e479a")
 		)
@@ -13699,9 +14098,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C23186" (at 53.34 360.68 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C23186"
+			(at 53.34 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fe633dbe-1eff-4ce2-a55a-aae568f2681f")
 		)
@@ -13781,9 +14186,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C23186" (at 63.5 360.68 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C23186"
+			(at 63.5 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7e834a76-74ce-405b-8e09-46392d23e159")
 		)
@@ -13868,9 +14279,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C7519" (at 53.34 388.62 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C7519"
+			(at 53.34 388.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a79d8700-ae8c-44c4-98cd-4501a42669d6")
 		)
@@ -14042,9 +14459,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C424093" (at 170.18 320.04 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C424093"
+			(at 170.18 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3040489e-bcba-4df2-b142-30c4329ed77d")
 		)
@@ -14133,9 +14556,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C25804" (at 152.4 337.82 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C25804"
+			(at 152.4 337.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bb409cb3-83fe-4404-96c9-e16901555f7c")
 		)
@@ -14217,9 +14646,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C19666" (at 193.04 309.88 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C19666"
+			(at 193.04 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c7bdd94a-4c43-46e5-93c8-eb277d5e7b09")
 		)
@@ -14301,9 +14736,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C19666" (at 205.74 330.2 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C19666"
+			(at 205.74 330.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b4fa9681-a0b0-42db-9422-a1ef0a3c947f")
 		)
@@ -14385,9 +14826,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C51118" (at 170.18 370.84 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C51118"
+			(at 170.18 370.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6dae0266-f625-473a-bf24-7a6e4ee02457")
 		)
@@ -14478,9 +14925,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C15849" (at 152.4 386.08 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C15849"
+			(at 152.4 386.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "20c65137-0603-4de0-97d1-2b34c3a5f04a")
 		)
@@ -14562,9 +15015,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C19702" (at 193.04 386.08 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C19702"
+			(at 193.04 386.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1f039945-d000-487e-81fc-a68938db4e34")
 		)
@@ -14646,9 +15105,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C14663" (at 205.74 386.08 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C14663"
+			(at 205.74 386.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ac22472f-2393-4c4b-859b-1bf7bef14f86")
 		)
@@ -14728,9 +15193,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C25804" (at 236.22 325.12 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C25804"
+			(at 236.22 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "42e1e4b9-890d-4954-aa2a-07960ef28a70")
 		)
@@ -14812,9 +15283,15 @@
 				)
 			)
 		)
-    (property "LCSC" "C15849" (at 236.22 345.44 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "LCSC" "C15849"
+			(at 236.22 345.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7f310e0a-fed7-45d1-99fc-6712262025e0")
 		)
@@ -15653,10 +16130,6 @@
 		(uuid "d43b3570-e3f9-4f9c-8eb5-d2bd7f128bd4")
 	)
 	(no_connect
-		(at 86.36 355.59999999999997)
-		(uuid "9e7300ea-5a7a-4180-97c5-90033d4b5c36")
-	)
-	(no_connect
 		(at 86.36 358.14)
 		(uuid "d4a2a141-5314-4aaf-924b-8a215371b6ff")
 	)
@@ -15733,10 +16206,6 @@
 		(uuid "373c51d7-26e7-4378-b777-c3a97a28b889")
 	)
 	(no_connect
-		(at 180.34 322.58000000000004)
-		(uuid "4357a7a8-702d-48df-940c-1bd173274a97")
-	)
-	(no_connect
 		(at 175.26000000000002 370.84)
 		(uuid "339764b9-00cf-4201-babf-6507af072edf")
 	)
@@ -15759,6 +16228,672 @@
 			(justify left bottom)
 		)
 		(uuid "4a485ff8-81d0-4703-ae2c-61a140756210")
+	)
+	(symbol
+		(lib_id "Switch:SW_SPDT")
+		(at 299.72 320.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1a8d813f-862a-4f4d-9bba-37e7abf786cd")
+		(property "Reference" "SW1"
+			(at 299.72 314.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR (MSK12C02)"
+			(at 299.72 325.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "emg_wearable:SW_SPDT_Slide_SHOUHAN_MSK12C02"
+			(at 299.72 320.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 312.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Switch, single pole double throw"
+			(at 299.72 320.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C431540" (at 299.72 320.04 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "MPN" "SHOUHAN MSK12C02" (at 299.72 320.04 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "53b4a4ac-912c-47b8-8dad-03f7d8e23ff4")
+		)
+		(pin "2"
+			(uuid "00cd59ec-de3f-4115-9a10-6994ba61ba40")
+		)
+		(pin "3"
+			(uuid "3ac2e565-db33-4126-943d-803937bc350a")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 335.28 317.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6aec45be-5ede-4ac0-a886-081a10cbaa99")
+		(property "Reference" "R705"
+			(at 332.74 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1M"
+			(at 337.82 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 333.502 317.5 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 335.28 317.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 335.28 317.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C22935" (at 335.28 317.5 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "f7a77b2e-f9eb-4c63-aa53-3e5054310df9")
+		)
+		(pin "2"
+			(uuid "087cf340-3694-42c4-bc9d-eb614c6134ef")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "R705")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 335.28 342.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "eb8740dd-cbea-4945-8afd-a1417704315d")
+		(property "Reference" "R706"
+			(at 332.74 342.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1M"
+			(at 337.82 342.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 333.502 342.9 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 335.28 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 335.28 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C22935" (at 335.28 342.9 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "c3755d6e-f89b-4232-bad9-386cecfa0de7")
+		)
+		(pin "2"
+			(uuid "e9610028-e091-4f55-b2b9-afe93eadcf23")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "R706")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 350.52 342.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6bf622c4-27ea-42f7-9a02-5fba61a40900")
+		(property "Reference" "C709"
+			(at 347.98 342.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 353.06 342.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 351.485 339.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 350.52 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 350.52 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C14663" (at 350.52 342.9 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "a7c466a7-23e5-444a-b40a-9169a5a4c254")
+		)
+		(pin "2"
+			(uuid "7c689576-b34a-48f9-95d6-f8fc9a257709")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "C709")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 383.54 317.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cd346f00-4e95-476c-aa98-716e45861c05")
+		(property "Reference" "R707"
+			(at 381.0 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 386.08 317.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 381.762 317.5 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 383.54 317.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 383.54 317.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C21190" (at 383.54 317.5 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "d3dc78fb-39b4-4027-8086-c8dbe42147a8")
+		)
+		(pin "2"
+			(uuid "3e256742-9b14-4be3-9818-b03ee8122698")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "R707")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 383.54 342.9 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c2b5f77c-9b65-41ae-93c2-90162098957a")
+		(property "Reference" "D102"
+			(at 381.0 342.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CHG red"
+			(at 386.08 342.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
+			(at 383.54 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 383.54 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 383.54 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C2286" (at 383.54 342.9 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "7338c5a8-083b-499d-8e9d-f106a070329f")
+		)
+		(pin "2"
+			(uuid "655bff9d-7baf-451d-928d-7fd2d034d1cb")
+		)
+		(instances
+			(project "emg_wearable_revA"
+				(path "/83f63b6a-8dba-42d8-8ff4-81f3e69fb851"
+					(reference "D102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "VBAT_SYS"
+		(at 304.8 317.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dc11cb7c-6632-4712-8b3f-6ca26fadaf78")
+	)
+	(label "VBAT"
+		(at 294.64000000000004 320.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6b6dc004-877d-4067-9db0-97f0f87c88ba")
+	)
+	(label "VBAT_SYS"
+		(at 335.28 313.69 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "11c98b2c-ecf3-4795-a409-77dac8f2700c")
+	)
+	(label "VBAT_SENSE"
+		(at 335.28 321.31 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "08e33b5d-32a2-4c59-8658-565e3d344bcb")
+	)
+	(label "VBAT_SENSE"
+		(at 335.28 339.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3473f212-fe1b-4b87-a560-5998bd4eaa70")
+	)
+	(label "AGND"
+		(at 335.28 346.71 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2d760e17-878c-4deb-b6ae-a20d396cf61b")
+	)
+	(label "VBAT_SENSE"
+		(at 350.52 339.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ebe10e67-d506-42e3-aeec-8e266c760e96")
+	)
+	(label "AGND"
+		(at 350.52 346.71 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e7d65f39-bca8-48bc-a55c-87e71a443fee")
+	)
+	(label "VBUS"
+		(at 383.54 313.69 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ba199687-14c8-4d40-b259-a3dada2a3edc")
+	)
+	(label "CHG_LED"
+		(at 383.54 321.31 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "24da79b2-1dfe-4f89-a144-1685d0d535b8")
+	)
+	(label "CHG_STAT"
+		(at 383.54 346.71 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8ec5ac72-6a7f-4dd5-995f-bb99c4c0cee7")
+	)
+	(label "CHG_LED"
+		(at 383.54 339.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a1d50ba0-9e91-4689-bccb-26c2ecbfa09f")
+	)
+	(label "VBAT_SYS"
+		(at 106.68 63.5 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cf9444c1-b025-4703-bd5e-0c5804e6ff56")
+	)
+	(label "CHG_STAT"
+		(at 180.34 322.58000000000004 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f6a38339-e542-4634-955a-ea84d7c5324a")
+	)
+	(label "VBAT_SENSE"
+		(at 86.36 355.59999999999997 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "74dddd26-4d10-40af-9b28-e82b5cc33647")
+	)
+	(no_connect
+		(at 304.8 322.58000000000004)
+		(uuid "961fbd1d-e4c3-4f8d-bb79-4595fc556e92")
+	)
+	(text "ON/OFF: SW1 disconnects the battery from the system path (Q101). Off = 0 uA from the cell; USB still powers the board and U8 still charges the cell.\nSlider toward pin 1 = ON (connects 2-1). BATTERY MONITOR: VBAT_SYS / 2 into IO10 (ADC1_CH9), 1M/1M + 100nF, 2 uA only while ON.\nCHARGE LED: D102 lit while U8 is charging (STAT low); off when full or no USB."
+		(exclude_from_sim no)
+		(at 290 300 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "2086b217-6d5f-4038-b217-8c57616154d6")
 	)
 	(sheet_instances
 		(path "/"

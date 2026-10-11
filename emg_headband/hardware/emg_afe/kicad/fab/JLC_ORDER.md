@@ -23,7 +23,8 @@ Files, all in this folder:
 - **Coverlay colour:** any.
 - **Stiffener:** FR4, 0.2 mm, on the bottom side. Put this in the stiffener notes or remark:
   "Stiffener: FR4 0.2 mm on the bottom side, per the Stiffener layer
-  (emg_wearable_revA-Stiffener.gbr), 3 areas. Everything outside them is flex."
+  (emg_wearable_revA-Stiffener.gbr), 3 areas. Circles inside them are holes
+  for pegs and USB-C shell tabs. Everything outside them is flex."
 
 ## 3. Assembly
 
@@ -33,7 +34,7 @@ Files, all in this folder:
    - Every line should match an LCSC part.
    - Check stock for ADS1298IPAGR (C527440) and the jack J1 (C4991872).
    - If anything shows "shortage", tell me and I'll pick a substitute.
-4. Expect 54 placed parts. These are not placed, and that's intentional:
+4. Expect 60 placed parts. These are not placed, and that's intentional:
    - J3: the LiPo solder pads.
    - TP1 to TP10: test pads.
 
@@ -48,6 +49,8 @@ Check each of these against the silkscreen or pad outline, and rotate in JLC's t
 - **J1, jack:** the plug opening faces the right board edge.
 - **SOT-23 and SOT-23-5 parts** (U6, U7, U8, U9, Q101): pin 1 matches.
 - **D101 diode:** the cathode band matches the silkscreen.
+- **SW1, slide switch:** the lever sticks out past the bottom board edge, and the 3 signal pins are inboard.
+- **D102, charge LED:** the cathode (green mark on most LEDs) faces down, toward the board's bottom edge. KiCad pad 1 is the cathode.
 
 ### Rotation corrections already applied to the CPL
 
@@ -60,6 +63,7 @@ corrected in `emg_wearable_revA_cpl_jlc.csv`, from JLC's preview on 11 Oct 2026:
 | U1 (ADS1298, TQFP-64) | 180 | 90 |
 | U6, U8, U9 (SOT-23-5), U7 (SOT-23-6) | 0 | 270 |
 | Q101 (SOT-23) | 0 | 180 |
+| J6 (FPC) | 90 | 90, and Mid X moved to the part centre (+2.2 mm) |
 
 If the board is re-exported from KiCad, apply the same offsets again.
 
