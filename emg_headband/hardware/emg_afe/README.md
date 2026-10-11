@@ -47,7 +47,7 @@ Alternatives considered:
   XIAO's USB data lines are not on its castellations, so it would need a
   different MCU layout.
 
-Charging while worn is not supported in Rev A.
+Charging while worn: only from a battery-powered laptop or an isolated (Class II) USB charger.
 
 ## Signal chain and values
 
@@ -56,12 +56,22 @@ Net names follow the design report: `+3V3_A`, `AGND`, `VMID_RAW`, `VMID`,
 `GAIN_FB`, `GAIN_OUT`, `AAF_MID`, `AAF_OUT`, `ADC_OUT`, `VMID_MON`.
 
 **Power and reference**
-- LiPo on the XIAO BAT pads (the XIAO charges it from USB).
-- `+3V3_A` from the XIAO 3V3 through a ferrite bead, 10 µF and 100 nF. The AFE
-  is therefore never live while the ESP32 is unpowered.
-- VMID: R101/R102 100 kΩ divider, C103 1 µF, buffered by U3A (OPA2333). 47 Ω
-  series resistor out of U3A before C104 1 µF. Feed INA333 REF from the buffer
-  side of that resistor.
+- LiPo (protected cell) on J3, wired to the XIAO BAT pads. The XIAO charges it
+  from USB-C.
+- Passive power path, no switches: USB 5 V through a Schottky (D101, B5819W)
+  and the battery through a P-MOSFET (Q101, AO3401A, gate on VBUS with a 100 kΩ
+  pull-down) join at `VSYS`. USB present: Q101 is off and VSYS ≈ 4.7 V from
+  USB. USB absent: Q101 is on and VSYS = VBAT. Both: USB carries the load while
+  the XIAO charges the battery.
+- `+3V0_A` from a dedicated low-noise LDO (U6, LP5907MFX-3.0, 6.5 µVrms,
+  82 dB PSRR at 1 kHz) fed from VSYS, replacing the ferrite off the XIAO 3V3.
+  EN is tied to the XIAO 3V3, so the AFE is never live while the ESP32 is
+  unpowered. 1 µF and 100 nF at the output.
+- VMID (now 1.5 V): R101/R102 100 kΩ divider, C103 1 µF, buffered by U3A
+  (OPA2333). 47 Ω series resistor out of U3A before C104 1 µF. Feed INA333 REF
+  from the buffer side of that resistor.
+- Check before layout that the XIAO 5V pin reads ~0 V with USB unplugged
+  (no back-feed from BAT), or Q101 will not turn on.
 
 **Electrode input**
 - J_ELEC: 3.5 mm TRS jack (tip ELEC_P, ring ELEC_N, sleeve ELEC_REF).
