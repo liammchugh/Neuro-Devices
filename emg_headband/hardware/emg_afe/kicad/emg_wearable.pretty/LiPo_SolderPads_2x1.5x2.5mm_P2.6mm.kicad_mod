@@ -1,4 +1,4 @@
-(footprint "LiPo_SolderPads_2x2.0x3.0mm_P3.5mm"
+(footprint "LiPo_SolderPads_2x1.5x2.5mm_P2.6mm"
   (version 20241229)
   (generator "kicad-mcp")
   (generator_version "9.0")
@@ -12,7 +12,7 @@
     (uuid "82487899-28fa-4903-9a81-fca67eceb357")
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (property "Value" "LiPo_SolderPads_2x2.0x3.0mm_P3.5mm" (at 0 2.6 0)
+  (property "Value" "LiPo_SolderPads_2x1.5x2.5mm_P2.6mm" (at 0 2.6 0)
     (layer "F.Fab")
     (uuid "1b7c6589-da57-4c2f-828b-d199c0060a43")
     (effects (font (size 1 1) (thickness 0.15)))
@@ -24,8 +24,8 @@
   )
 
   (fp_rect
-    (start -3.05 -1.8)
-    (end 3.05 1.8)
+    (start -2.3 -1.5)
+    (end 2.3 1.5)
     (stroke (width 0.05) (type default))
     (fill none)
     (layer "F.CrtYd")
@@ -33,15 +33,15 @@
   )
 
   (pad "1" smd rect
-    (at -1.75 0)
-    (size 2 3)
+    (at -1.3 0)
+    (size 1.5 2.5)
     (layers "F.Cu" "F.Paste" "F.Mask")
     (uuid "17a6756c-4675-4352-af4f-60be8f06e063")
   )
 
   (pad "2" smd roundrect
-    (at 1.75 0)
-    (size 2 3)
+    (at 1.3 0)
+    (size 1.5 2.5)
     (layers "F.Cu" "F.Paste" "F.Mask")
     (roundrect_rratio 0.25)
     (uuid "2f84c388-e8e0-434b-9323-b56fbddfd703")
