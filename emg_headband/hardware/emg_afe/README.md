@@ -12,14 +12,18 @@ until the isolation checks in "Bring-up" pass.
 
 1. Works with 1, 2 or 3 simultaneous electrode pairs, chosen by firmware mode,
    with no rework.
-2. Electrodes: one TRS jack per channel (tip +, ring −, sleeve REF) plus a
-   flip-lock FPC in parallel for future flex-PCB arrays. All REF sleeves share
+2. Electrodes: one 3.5 mm TRS jack for CH1 (tip +, ring −, sleeve REF) plus a
+   1 mm FPC carrying CH1 to CH3 for flex-PCB arrays or a breakout (Liam, 11 Oct
+   2026: three 3.5 mm jacks do not fit the 2.5" × 1" board). All REF sleeves share
    one reference/RLD net, so 9 electrodes (3 REF) or 7 (1 REF) both work.
    Series resistors on every input.
 3. Power: passive USB/battery handling in every state (battery, USB, both), no
    switches. Dedicated low-noise analog rail. Protected LiPo.
-4. Debug: USB serial over the XIAO USB-C by default; isolated UART footprint
-   left unpopulated.
+4. Debug: USB serial over the XIAO USB-C. The isolated UART footprint was
+   dropped for size.
+9. Board: 2-layer flex PCB, 63.5 × 25.4 mm (2.5" × 1") max, XIAO soldered by
+   its castellations at one end with USB-C pointing down (across the long
+   axis), jack and FPC at the other end.
 5. Filtering in firmware: capture wide (about 0.5 Hz up, 4 kSPS or more) so
    blink/EOG and envelope data are kept; 20 to 450 Hz is the EMG band.
 6. Lead-off detection (built into the ADS1298).
@@ -46,31 +50,23 @@ into a computer, the body would be connected through the reference electrode,
 AGND and the USB shield to mains earth, and the guitar strings are on mains
 earth too.
 
-Rev A handles this in two layers:
+Rev A relies on one rule: **USB serial over the XIAO's USB-C is the debug
+path** (Liam, 11 Oct 2026), as on any Arduino-style R&D board. With electrodes
+on the body and USB plugged in, run the laptop on battery and unplugged from
+mains, or use a synthetic input instead of electrodes. This note is on the
+schematic. A USB isolator dongle between the laptop and the board is the easy
+upgrade when the laptop has to stay on mains.
 
-1. **USB serial over the XIAO's USB-C is the debug default** (Liam, 11 Oct 2026),
-   as on any Arduino-style R&D board. With electrodes on the body and USB
-   plugged in, run the laptop on battery and unplugged from mains, or use a
-   synthetic input instead of electrodes. This note is on the schematic.
-2. **Optional isolated UART footprint (DNP)** for live data when the laptop
-   has to stay on mains: a digital isolator (ISO7721DWVR, C2864013) between the
-   ESP32 UART and a 4-pin header (VCC_ISO, GND_ISO, TX, RX). The computer side
-   is powered by a USB-UART adapter plugged into the header, so no isolated
-   DC-DC is needed on the board.
-
-Alternatives considered:
-
-- **Rule only** (no isolator): cheapest, but nothing enforces it.
-- **Full isolated USB** (USB isolator plus isolated DC-DC): heavier, and the
-  XIAO's USB data lines are not on its castellations, so it would need a
-  different MCU layout.
+The isolated UART footprint (ISO7721) from earlier drafts was dropped to fit
+the 2.5" × 1" flex board.
 
 Charging while worn: only from a battery-powered laptop or an isolated (Class II) USB charger.
 
 ## Circuit
 
 **Power and reference**
-- LiPo (protected cell) on J3, wired to the XIAO BAT pads. The XIAO charges it
+- LiPo (protected cell) soldered to J3 (two SMD pads), which also feed the
+  XIAO BAT pads under the module (pad position to verify against Seeed). The XIAO charges it
   from USB-C.
 - Passive power path, no switches: USB 5 V through a Schottky (D101, B5819W)
   and the battery through a P-MOSFET (Q101, AO3401A, gate on VBUS with a 100 kΩ
@@ -86,10 +82,10 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
   (no back-feed from BAT), or Q101 will not turn on.
 
 **Electrodes**
-- J1 / J4 / J5: CUI SJ-3523-SMT 3.5 mm TRS jacks, one per channel (tip ELECn_P,
-  ring ELECn_N, sleeve `RLD_ELEC`).
+- J1: CUI SJ-3523-SMT 3.5 mm TRS jack for CH1 (tip ELEC1_P, ring ELEC1_N,
+  sleeve `RLD_ELEC`).
 - J6: Hirose FH34SRJ-12S-0.5SH(50) back-flip FPC (C424659; 12 pins, 0.5 mm,
-  1.0 mm tall), in parallel with the jacks: use one or the other. Pinout: 1
+  1.0 mm tall), in parallel with J1 for CH1: use one or the other. CH2 and CH3 are on J6 only. Pinout: 1
   AGND, 2/3 CH1 P/N, 4 REF, 5 AGND, 6/7 CH2, 8 REF, 9 AGND, 10/11 CH3, 12 REF,
   MP AGND. Footprint `emg_wearable:Hirose_FH34SRJ-12S-0.5SH_...` is drawn from
   the Hirose land pattern; check it against the datasheet before ordering. The
@@ -118,9 +114,8 @@ Charging while worn: only from a battery-powered laptop or an isolated (Class II
 | ADS1298IPAGR | C527440 | extended, ≈ $20, 1,953 in stock on 11 Oct 2026 |
 | LP5907MFX-3.0/NOPB | C475492 | extended |
 | AO3401A, B5819W | C15127, C8598 | basic |
-| SJ-3523-SMT-TR ×3 | C4991872 | extended, 737 in stock; PJ-320D (C431535) is a fallback with a different footprint |
+| SJ-3523-SMT-TR | C4991872 | extended, 737 in stock; PJ-320D (C431535) is a fallback with a different footprint |
 | FH34SRJ-12S-0.5SH(50) | C424659 | extended, 1 mm tall, custom footprint |
-| ISO7721DWVR | C2864013 | extended, DNP in Rev A |
 
 Every JLC-placed symbol in `kicad/emg_wearable_revA.kicad_sch` carries an
 `LCSC` field; the grouped BOM is in `kicad/bom/`. The XIAO is not
