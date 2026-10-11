@@ -30,14 +30,15 @@ earth too.
 
 Rev A handles this in two layers:
 
-1. **XIAO USB-C is for flashing and charging only, with electrodes unplugged.**
-   Silkscreen this next to the electrode jack. Bench tests with a synthetic
-   source are fine over USB.
-2. **Isolated UART debug header** for live data while electrodes are on: a
-   digital isolator (ISO7721, reinforced DW variant if JLC stocks it) between
-   the ESP32 UART and a 4-pin header (VCC_ISO, GND_ISO, TX, RX). The computer
-   side of the isolator is powered from a standard USB-UART adapter plugged
-   into the header, so no isolated DC-DC is needed on the board.
+1. **USB serial over the XIAO's USB-C is the debug default** (Liam, 11 Oct 2026),
+   as on any Arduino-style R&D board. With electrodes on the body and USB
+   plugged in, run the laptop on battery and unplugged from mains, or use a
+   synthetic input instead of electrodes. This note is on the schematic.
+2. **Optional isolated UART footprint (DNP)** for live data when the laptop
+   has to stay on mains: a digital isolator (ISO7721DWVR, C2864013) between the
+   ESP32 UART and a 4-pin header (VCC_ISO, GND_ISO, TX, RX). The computer side
+   is powered by a USB-UART adapter plugged into the header, so no isolated
+   DC-DC is needed on the board.
 
 Alternatives considered:
 
@@ -79,8 +80,12 @@ Net names follow the design report: `+3V3_A`, `AGND`, `VMID_RAW`, `VMID`,
 
 | Stage | Q target | R1 = R2 | C1 (feedback) | C2 (to VMID) | fc |
 |---|---|---|---|---|---|
-| U4A | 0.541 | 16.5 kΩ | 22 nF C0G | 18 nF C0G | ≈ 485 Hz, Q ≈ 0.55 |
-| U4B | 1.307 | 12.7 kΩ | 68 nF C0G | 10 nF C0G | ≈ 480 Hz, Q ≈ 1.30 |
+| U4A | 0.541 | 165 kΩ | 2.2 nF C0G | 1.8 nF C0G | ≈ 485 Hz, Q ≈ 0.55 |
+| U4B | 1.307 | 127 kΩ | 6.8 nF C0G | 1 nF C0G | ≈ 480 Hz, Q ≈ 1.30 |
+
+Impedance is scaled ×10 from the first draft (16.5 k / 12.7 k with 22 to
+68 nF) because 15 to 68 nF C0G parts are barely stocked at JLC in 0603. fc and
+Q are unchanged; the extra resistor noise is negligible after a gain of 66.
 
 About 69 dB at 3.55 kHz, the frequency that folds onto 450 Hz at 4 kSPS.
 Simulate before layout and check LCSC stock for the C0G values.
@@ -95,7 +100,10 @@ Simulate before layout and check LCSC stock for the C0G values.
 |---|---|---|
 | INA333AIDGKR | C19450 | extended |
 | OPA2333AIDR ×2 | C38732 | extended, one fee for both |
-| ISO7721 | TBD | check DW (reinforced) stock |
+| ISO7721DWVR | C2864013 | extended, DNP in Rev A |
+
+Every symbol in `kicad/emg_wearable_revA.kicad_sch` carries an `LCSC` field;
+the grouped BOM is in `kicad/bom/`.
 
 Add an `LCSC` field to every symbol for kicad-jlcpcb-tools. The XIAO is not
 JLC-assemblable: footprint for headers or castellations, hand-soldered.
