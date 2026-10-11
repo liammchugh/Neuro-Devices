@@ -49,6 +49,21 @@ Check each of these against the silkscreen or pad outline, and rotate in JLC's t
 - **SOT-23 and SOT-23-5 parts** (U6, U7, U8, U9, Q101): pin 1 matches.
 - **D101 diode:** the cathode band matches the silkscreen.
 
+### Rotation corrections already applied to the CPL
+
+KiCad and JLC's part models disagree on a few rotations. These are already
+corrected in `emg_wearable_revA_cpl_jlc.csv`, from JLC's preview on 11 Oct 2026:
+
+| Part | KiCad rotation | JLC rotation |
+|---|---|---|
+| J1 (jack) | -90 | 180 |
+| J6 (FPC) | 90 | 270 |
+| U1 (ADS1298, TQFP-64) | 180 | 90 |
+| U6, U8, U9 (SOT-23-5), U7 (SOT-23-6) | 0 | 270 |
+| Q101 (SOT-23) | 0 | 180 |
+
+If the board is re-exported from KiCad, apply the same offsets again.
+
 ## 5. Order
 
 Confirm and pay. JLC engineers sometimes email a question about the stiffener, the through-hole USB shell tabs, or a rotation. Forward it to the thread if you're unsure.
