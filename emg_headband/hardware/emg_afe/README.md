@@ -1,24 +1,42 @@
 # EMG wearable, Rev A (KiCad, JLCPCB)
 
-Single-channel 3.3 V surface EMG front end on a battery-powered wearable, with a
-XIAO ESP32-S3 that sends data to the pedal wirelessly. This spec merges the
-Concept A design report and both reviews in `../../docs/`. Values here supersede
-the report where they differ.
+One to three channel surface EMG front end on a battery-powered headband
+wearable, built around a TI ADS1298 and a XIAO ESP32-S3 that sends data to the
+pedal wirelessly. The original discrete single-channel design (INA333 + OPA2333)
+is in git history (commit 3aedaac) and in `../../docs/`.
 
 Rev A is a bench board. Synthetic differential inputs first; no body electrodes
 until the isolation checks in "Bring-up" pass.
+
+## Requirements (reviewed, Liam, 11 Oct 2026)
+
+1. Works with 1, 2 or 3 simultaneous electrode pairs, chosen by firmware mode,
+   with no rework.
+2. Electrodes: one TRS jack per channel (tip +, ring −, sleeve REF) plus a
+   flip-lock FPC in parallel for future flex-PCB arrays. All REF sleeves share
+   one reference/RLD net, so 9 electrodes (3 REF) or 7 (1 REF) both work.
+   Series resistors on every input.
+3. Power: passive USB/battery handling in every state (battery, USB, both), no
+   switches. Dedicated low-noise analog rail. Protected LiPo.
+4. Debug: USB serial over the XIAO USB-C by default; isolated UART footprint
+   left unpopulated.
+5. Filtering in firmware: capture wide (about 0.5 Hz up, 4 kSPS or more) so
+   blink/EOG and envelope data are kept; 20 to 450 Hz is the EMG band.
+6. Lead-off detection (built into the ADS1298).
+7. JLCPCB assembly, LCSC parts, smallest practical size for a headband.
+8. Pedal side is out of scope; it gets data wirelessly.
 
 ## Decisions
 
 | Topic | Decision | Source |
 |---|---|---|
-| Architecture | Battery wearable, wireless to pedal (BLE / ESP-NOW). Optional USB for flashing, charging and debug | Liam, 11 Oct 2026 |
-| Sample rate | 4 kSPS on ADC1, decimate in firmware | Reviews |
-| Anti-alias | 4th-order Butterworth Sallen-Key, about 480 Hz, on a second OPA2333 (U4) | Reviews (4th chosen over 2nd: parts are cheap) |
-| First-stage gain | G1 ≈ 6 (RG = 20 kΩ), tolerates about ±250 mV electrode offset | Review 2 |
-| Second-stage gain | R403 = 100 kΩ (G2 = 11, total ≈ 66) or 390 kΩ (G2 = 40, total ≈ 240), solder-jumper selectable | Review 2 |
-| Reference electrode | R205 = 100 kΩ to VMID (footprint allows 47 to 220 kΩ) | Reviews, safe once on battery |
-| Schematic | Flat or 2 to 3 sheets, not 5 | Review 2 |
+| Architecture | Battery wearable, wireless to pedal (BLE / ESP-NOW). USB-C for flashing, charging and serial debug | Liam, 11 Oct 2026 |
+| Front end | ADS1298 (8 ch, 24-bit, PGA, RLD, lead-off), CH1 to CH3 used, CH4 to CH8 tied to AVDD and powered down | Liam, 11 Oct 2026 |
+| Sample rate | 4 kSPS (or 8 kSPS) from the ADS1298, decimate in firmware | Reviews |
+| Filtering | Firmware: HPF about 0.5 Hz for wideband capture, 20 to 450 Hz for EMG features | Liam, 11 Oct 2026 |
+| Input network | 22 kΩ series + 1 nF C0G to AGND per input (≈ 7 kHz). The ADS1298 modulator runs at 512 kHz, so no higher-order anti-alias filter is needed | Datasheet |
+| Reference / RLD | RLDOUT with 1 MΩ ∥ 1.5 nF feedback (datasheet), 330 kΩ series to the REF electrode(s), DC fault current < 10 µA | Datasheet, critic review |
+| Schematic | Flat, one A3 sheet | Review 2 |
 
 ## Isolation and USB debug
 
@@ -49,11 +67,7 @@ Alternatives considered:
 
 Charging while worn: only from a battery-powered laptop or an isolated (Class II) USB charger.
 
-## Signal chain and values
-
-Net names follow the design report: `+3V3_A`, `AGND`, `VMID_RAW`, `VMID`,
-`ELEC_P`, `ELEC_N`, `ELEC_REF`, `IN_P`, `IN_N`, `INA_OUT`, `HP_NODE`,
-`GAIN_FB`, `GAIN_OUT`, `AAF_MID`, `AAF_OUT`, `ADC_OUT`, `VMID_MON`.
+## Circuit
 
 **Power and reference**
 - LiPo (protected cell) on J3, wired to the XIAO BAT pads. The XIAO charges it
@@ -63,80 +77,70 @@ Net names follow the design report: `+3V3_A`, `AGND`, `VMID_RAW`, `VMID`,
   pull-down) join at `VSYS`. USB present: Q101 is off and VSYS ≈ 4.7 V from
   USB. USB absent: Q101 is on and VSYS = VBAT. Both: USB carries the load while
   the XIAO charges the battery.
-- `+3V0_A` from a dedicated low-noise LDO (U6, LP5907MFX-3.0, 6.5 µVrms,
+- `+3V0_A` (ADS1298 AVDD) from a dedicated low-noise LDO (U6, LP5907MFX-3.0, 6.5 µVrms,
   82 dB PSRR at 1 kHz) fed from VSYS, replacing the ferrite off the XIAO 3V3.
   EN is tied to the XIAO 3V3, so the AFE is never live while the ESP32 is
-  unpowered. 1 µF and 100 nF at the output.
-- VMID (now 1.5 V): R101/R102 100 kΩ divider, C103 1 µF, buffered by U3A
-  (OPA2333). 47 Ω series resistor out of U3A before C104 1 µF. Feed INA333 REF
-  from the buffer side of that resistor.
+  unpowered. ADS1298 DVDD runs from the XIAO 3V3 (AVDD − DVDD = −0.3 V, inside
+  the −2.1 to 3.6 V limit).
 - Check before layout that the XIAO 5V pin reads ~0 V with USB unplugged
   (no back-feed from BAT), or Q101 will not turn on.
 
-**Electrode input**
-- J1 / J4 / J5: one 3.5 mm TRS jack per channel (tip ELECn_P, ring ELECn_N,
-  sleeve ELECn_REF), CUI SJ-3523-SMT, 9 electrodes total (Liam, 11 Oct 2026).
-- J6: Hirose FH12-12S-0.5SH flip-lock FPC (12 pins, 0.5 mm, 2 mm tall) for a
-  future flex-PCB electrode array, wired in parallel with the TRS jacks. Use
-  one or the other. Pinout: 1 AGND, 2-4 CH1 P/N/REF, 5 AGND, 6-8 CH2, 9 AGND,
-  10-12 CH3, MP AGND.
-- Channels 2 and 3 stop at the connectors until the ADC architecture is
-  chosen (ADS1298 vs three discrete chains). With a shared reference or
-  bias-drive electrode the count drops from 9 to 7.
-- R201/R202 100 kΩ series, R203/R204 10 MΩ to VMID, R205 100 kΩ ELEC_REF to VMID.
-- C201/C202 22 pF C0G to AGND, C203 220 pF C0G across IN_P/IN_N.
-- DNP footprints for low-leakage input clamps and lead-off comparators.
+**Electrodes**
+- J1 / J4 / J5: CUI SJ-3523-SMT 3.5 mm TRS jacks, one per channel (tip ELECn_P,
+  ring ELECn_N, sleeve `RLD_ELEC`).
+- J6: Hirose FH12-12S-0.5SH flip-lock FPC (12 pins, 0.5 mm, 2 mm tall), in
+  parallel with the jacks: use one or the other. Pinout: 1 AGND, 2/3 CH1 P/N,
+  4 REF, 5 AGND, 6/7 CH2, 8 REF, 9 AGND, 10/11 CH3, 12 REF, MP AGND.
+  A 1 mm Hirose FH34SRJ-12S-0.5SH (C424659, well stocked) fits the headband
+  better but needs a custom footprint; swap it in at layout.
 
-**Instrumentation amplifier**
-- U1 INA333AIDGKR, RG = R301 20 kΩ, G1 = 6. C301 100 nF and C302 1 µF at the pins.
-
-**High-pass and gain**
-- C401 10 nF C0G, R401 820 kΩ to VMID: 19.4 Hz.
-- U3B non-inverting, R402 10 kΩ, R403 100 kΩ or 390 kΩ (solder jumper).
-
-**Anti-alias (U4 = second OPA2333, unity-gain Sallen-Key, both to VMID)**
-
-| Stage | Q target | R1 = R2 | C1 (feedback) | C2 (to VMID) | fc |
-|---|---|---|---|---|---|
-| U4A | 0.541 | 165 kΩ | 2.2 nF C0G | 1.8 nF C0G | ≈ 485 Hz, Q ≈ 0.55 |
-| U4B | 1.307 | 127 kΩ | 6.8 nF C0G | 1 nF C0G | ≈ 480 Hz, Q ≈ 1.30 |
-
-Impedance is scaled ×10 from the first draft (16.5 k / 12.7 k with 22 to
-68 nF) because 15 to 68 nF C0G parts are barely stocked at JLC in 0603. fc and
-Q are unchanged; the extra resistor noise is negligible after a gain of 66.
-
-About 69 dB at 3.55 kHz, the frequency that folds onto 450 Hz at 4 kSPS.
-Simulate before layout and check LCSC stock for the C0G values.
-
-**ADC**
-- R501 1 kΩ, C501 15 nF to AGND (≈ 10.6 kHz) into XIAO D0 / GPIO1.
-- VMID_MON through 1 kΩ to D1 / GPIO2, subtracted in firmware.
+**ADS1298 (U1)**
+- IN1 to IN3 from the input RC. IN4 to IN8 and TESTP_PACE_OUT1/2 to AVDD, as
+  the datasheet asks for unused analog pins.
+- Internal 2.4 V reference: VREFP 10 µF + 100 nF to AGND, VREFN to AGND.
+- VCAP1 22 µF, VCAP2/3/4 1 µF to AGND. AVDD 10 µF + 2× 100 nF, DVDD 1 µF +
+  100 nF.
+- Internal clock (CLKSEL high, CLK not connected). RESV1 and DAISY_IN to DGND.
+  RLDREF and WCT not connected (internal mid-supply reference). GPIO1 to 4 not
+  connected: set them as outputs in firmware.
+- RLDIN tied to `RLD_ELEC` so firmware can measure the REF electrode.
+- SPI to the XIAO: D8 SCLK, D9 DOUT, D10 DIN, D3 CS (10 k pull-up), D4 DRDY,
+  D1 START, D0 RESET (10 k pull-up). PWDN held high by 10 k; use register
+  standby instead. D2/GPIO3 is left free because it is a strapping pin.
+- Firmware: power down unused channels (CHnSET.PDn), pick RLD sense channels
+  (RLD_SENSP/N) and use lead-off (LOFF) to detect which electrodes are attached.
 
 ## BOM notes for JLCPCB
 
 | Part | LCSC | Note |
 |---|---|---|
-| INA333AIDGKR | C19450 | extended |
-| OPA2333AIDR ×2 | C38732 | extended, one fee for both |
+| ADS1298IPAGR | C527440 | extended, ≈ $20, 1,953 in stock on 11 Oct 2026 |
+| LP5907MFX-3.0/NOPB | C475492 | extended |
+| AO3401A, B5819W | C15127, C8598 | basic |
+| SJ-3523-SMT-TR ×3 | C4991872 | extended, 737 in stock; PJ-320D (C431535) is a fallback with a different footprint |
+| FH12-12S-0.5SH(55) | C88360 | extended |
 | ISO7721DWVR | C2864013 | extended, DNP in Rev A |
 
-Every symbol in `kicad/emg_wearable_revA.kicad_sch` carries an `LCSC` field;
-the grouped BOM is in `kicad/bom/`.
-
-Add an `LCSC` field to every symbol for kicad-jlcpcb-tools. The XIAO is not
+Every JLC-placed symbol in `kicad/emg_wearable_revA.kicad_sch` carries an
+`LCSC` field; the grouped BOM is in `kicad/bom/`. The XIAO is not
 JLC-assemblable: footprint for headers or castellations, hand-soldered.
 
 ## Board
 
-2-layer rigid, 0603 passives, continuous AGND plane. Keep the electrode jack and
-input network away from the XIAO antenna and USB. Guard IN_P/IN_N, match their
-layout. Test points on every stage. Isolation gap under the ISO7721 with no
-copper crossing it.
+2-layer (4-layer if it helps the size), 0603 passives, continuous AGND plane.
+Keep U1, its supply and the electrode connectors away from the XIAO antenna and
+USB. Route each P/N pair together with matched lengths. Test points on the
+rails, RLD_OUT, DRDY and SCLK. Isolation gap under the ISO7721 with no copper
+crossing it.
 
 ## Bring-up
 
-1. No electrodes. Check `+3V3_A`, VMID, idle current.
-2. Synthetic 1 mVpp differential at VMID common mode, sweep 10 Hz to 4 kHz.
-3. 50/60 Hz common-mode test with mismatched source impedances.
-4. Confirm no continuity between electrode nets and the debug header's computer side.
-5. Only then electrodes, on battery, with USB unplugged.
+1. No electrodes. Check VSYS on battery, USB and both; `+3V0_A`; idle current.
+2. Read the ADS1298 ID register, run its internal test signal and input-short
+   noise test on each channel.
+3. Synthetic 1 mVpp differential input, sweep 1 Hz to 2 kHz, one to three
+   channels at a time.
+4. 50/60 Hz common-mode test with mismatched source impedances, RLD on and off.
+5. Confirm no continuity between electrode nets and the debug header's computer
+   side.
+6. Only then electrodes, on battery or a battery-powered laptop.
