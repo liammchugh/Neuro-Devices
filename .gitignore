@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# macOS
+.DS_Store
+
+# KiCad
+*-backups/
+fp-info-cache
+*.lck
+~*.lck
+*.kicad_prl
+_autosave-*
+
+# Altium local history and logs (legacy projects keep theirs)
+History/
+Project Logs for */
+!legacy/**
