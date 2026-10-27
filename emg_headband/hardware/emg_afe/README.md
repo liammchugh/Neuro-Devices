@@ -171,6 +171,9 @@ excluded from assembly. Check part rotations in JLC's placement preview
 
 ## Bring-up
 
+Full staged plan with pass/fail values: [BRINGUP_revA.md](BRINGUP_revA.md). Firmware:
+[`../../firmware/revA_bringup`](../../firmware/revA_bringup/README.md).
+
 1. No electrodes. Check VSYS on battery, USB and both; `+3V0_A`; idle current.
 2. Read the ADS1298 ID register, run its internal test signal and input-short
    noise test on each channel.
